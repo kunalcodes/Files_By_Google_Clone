@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <RelativeLayout
@@ -15,30 +15,30 @@
 
         <ImageView
             android:id="@+id/ivMenu"
-            android:background="@drawable/ic_menu_hamburger"
             android:layout_width="25dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginVertical="20dp"
-            android:layout_alignParentStart="true"
+            android:layout_height="30dp"
             android:layout_alignBaseline="@+id/ivLogo"
-            android:layout_height="30dp"/>
+            android:layout_alignParentStart="true"
+            android:layout_marginVertical="20dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/ic_menu_hamburger" />
 
         <ImageView
             android:id="@+id/ivLogo"
-            android:background="@drawable/ic_google_files_with_text"
             android:layout_width="88dp"
+            android:layout_height="25dp"
             android:layout_centerInParent="true"
-            android:layout_height="25dp"/>
+            android:background="@drawable/ic_google_files_with_text" />
 
         <ImageView
             android:id="@+id/ivSearch"
-            android:background="@drawable/ic_search"
             android:layout_width="30dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginVertical="20dp"
-            android:layout_alignParentEnd="true"
+            android:layout_height="30dp"
             android:layout_alignBaseline="@+id/ivLogo"
-            android:layout_height="30dp"/>
+            android:layout_alignParentEnd="true"
+            android:layout_marginVertical="20dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/ic_search" />
 
     </RelativeLayout>
 
@@ -46,15 +46,28 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/layoutTopBar"
-        android:layout_above="@+id/bottomNavigation" />
+        android:layout_above="@+id/bottomNavigation"
+        android:layout_below="@id/layoutTopBar" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigation"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:menu="@menu/bottom_navigation"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
-        android:layout_alignParentBottom="true"/>
+        app:elevation="2dp"
+        app:menu="@menu/bottom_navigation" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@id/layoutTopBar"
+        android:background="@drawable/shadow"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:layout_above="@id/bottomNavigation"
+        android:background="@drawable/shadow"/>
 
 </RelativeLayout>

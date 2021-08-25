@@ -3,14 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/drawable/grey_outline_rectangle.xml" value="0.19583333333333333" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/drawable/ic_clean.xml" value="0.19583333333333333" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/drawable/ic_google_files.xml" value="0.19166666666666668" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/drawable/ic_google_files_with_text.xml" value="0.17685185185185184" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/drawable/ic_google_text.xml" value="0.19166666666666668" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/drawable/shadow.xml" value="0.19583333333333333" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/activity_main.xml" value="0.165625" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/activity_main2.xml" value="0.1" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/activity_splash_screen.xml" value="0.165625" />
-        <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/fragment_browse.xml" value="0.33125" />
+        <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/fragment_browse.xml" value="0.22" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/fragment_clean.xml" value="0.1796875" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/fragment_share.xml" value="0.26851851851851855" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/menu/bottom_navigation.xml" value="0.1796875" />

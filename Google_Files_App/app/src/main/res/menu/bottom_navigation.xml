@@ -4,7 +4,7 @@
     <item
         android:id="@+id/nav_clean"
         android:icon="@drawable/ic_clean"
-        android:title="Clean"/>
+        android:title="Clean" />
 
     <item
         android:id="@+id/nav_browse"

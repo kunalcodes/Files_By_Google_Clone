@@ -3,12 +3,646 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.BrowseFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_browse_fragment" />
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvBrowseRecent"
+                android:layout_width="wrap_content"
+                android:text="Recent"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textAllCaps="true"
+                android:layout_height="wrap_content"/>
+
+            <HorizontalScrollView
+                android:id="@+id/svRecentList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBrowseRecent"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:paddingHorizontal="20dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/google_grey"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/ic_launcher_background" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="105dp"
+                            android:text="Screenshots"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="122dp"
+                            android:text="Images"
+                            android:textColor="@color/google_grey"
+                            android:textSize="10sp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="20dp"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/google_grey"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/ic_launcher_background" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="105dp"
+                            android:text="Whatsapp Animation"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="122dp"
+                            android:text="Videos"
+                            android:textColor="@color/google_grey"
+                            android:textSize="10sp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="20dp"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/google_grey"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/ic_launcher_background" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="105dp"
+                            android:text="Whatsapp Video"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="122dp"
+                            android:text="Video"
+                            android:textColor="@color/google_grey"
+                            android:textSize="10sp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="20dp"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/google_grey"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/ic_launcher_background" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="105dp"
+                            android:text="Uploads"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="122dp"
+                            android:text="Images"
+                            android:textColor="@color/google_grey"
+                            android:textSize="10sp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="20dp"
+                        app:cardCornerRadius="10dp"
+                        app:strokeColor="@color/google_grey"
+                        app:strokeWidth="0.5dp">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="100dp"
+                            android:background="@drawable/ic_launcher_background" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="105dp"
+                            android:text="Whatsapp Images"
+                            android:textColor="@color/black"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="122dp"
+                            android:text="Images"
+                            android:textColor="@color/google_grey"
+                            android:textSize="10sp" />
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvBrowseCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/svRecentList"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Categories"
+                android:textAllCaps="true" />
+
+            <LinearLayout
+                android:id="@+id/layoutCategoriesList"
+                android:layout_below="@+id/tvBrowseCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layoutCategoryDownloads"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/downladsIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/downloads"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+
+                    <TextView
+                        android:id="@+id/tvDownloads"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/downladsIcon"
+                        android:text="Downloads"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvDownloadsSize"
+                        android:layout_toEndOf="@+id/downladsIcon"
+                        android:layout_below="@id/tvDownloads"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="40 MB"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/downladsIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutCategoryImages"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imagesIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/images"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+
+                    <TextView
+                        android:id="@+id/tvImages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/imagesIcon"
+                        android:text="Images"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvImagesSize"
+                        android:layout_toEndOf="@+id/imagesIcon"
+                        android:layout_below="@id/tvImages"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="44 MB"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/imagesIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutCategoryVideos"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/videosIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/videos"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+
+                    <TextView
+                        android:id="@+id/tvVideos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/videosIcon"
+                        android:text="Videos"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvVideosSize"
+                        android:layout_toEndOf="@+id/videosIcon"
+                        android:layout_below="@id/tvVideos"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="1.2 GB"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/videosIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutCategoryAudio"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/audioIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/audio" />
+
+                    <TextView
+                        android:id="@+id/tvAudio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/audioIcon"
+                        android:text="Audio"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvAudioSize"
+                        android:layout_toEndOf="@+id/audioIcon"
+                        android:layout_below="@id/tvAudio"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="205 MB"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/audioIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutCategoryDocuments"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/documentsIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/documents"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+
+                    <TextView
+                        android:id="@+id/tvDocuments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/documentsIcon"
+                        android:text="Documents &amp; other"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvDocumentsSize"
+                        android:layout_toEndOf="@+id/documentsIcon"
+                        android:layout_below="@id/tvDocuments"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="290 MB"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/documentsIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/layoutCategoryApps"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/appsIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/apps"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+
+                    <TextView
+                        android:id="@+id/tvApps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/appsIcon"
+                        android:text="Apps"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvAppsSize"
+                        android:layout_toEndOf="@+id/appsIcon"
+                        android:layout_below="@id/tvApps"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="4.8 GB"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/appsIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvBrowseCollections"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/layoutCategoriesList"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Collections"
+                android:textAllCaps="true" />
+
+            <HorizontalScrollView
+                android:id="@+id/svCollectionList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBrowseCollections"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:paddingHorizontal="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cvFavourites"
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            app:cardCornerRadius="10dp"
+                            app:strokeColor="@color/google_grey"
+                            app:strokeWidth="0.5dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/favourites_folder" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cvFavourites"
+                            android:layout_marginTop="10dp"
+                            android:text="Favourites"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cvSafe"
+                            android:layout_width="200dp"
+                            android:layout_height="100dp"
+                            app:cardCornerRadius="10dp"
+                            app:strokeColor="@color/google_grey"
+                            app:strokeWidth="0.5dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/safe_folder" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/cvSafe"
+                            android:layout_marginTop="10dp"
+                            android:text="Safe folder"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <TextView
+                android:id="@+id/tvBrowseStorageDevices"
+                android:layout_width="wrap_content"
+                android:text="Storage Devices"
+                android:layout_below="@id/svCollectionList"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="20dp"
+                android:textAllCaps="true"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/layoutStorageDeviceList"
+                android:layout_below="@+id/tvBrowseStorageDevices"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="20dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/layoutStorageInternal"
+                    android:paddingStart="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/internalStorageIcon"
+                        android:layout_centerVertical="true"
+                        android:layout_marginVertical="10dp"
+                        android:background="@drawable/internal_storage"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"/>
+
+                    <TextView
+                        android:id="@+id/tvInternalStorage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toEndOf="@+id/internalStorageIcon"
+                        android:text="Internal Storage"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tvInternalStorageSize"
+                        android:layout_toEndOf="@+id/internalStorageIcon"
+                        android:layout_below="@id/tvInternalStorage"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="2dp"
+                        android:text="48 GB free"
+                        android:textSize="10sp"
+                        android:textColor="@color/google_grey"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_toEndOf="@+id/internalStorageIcon"
+                        android:layout_marginStart="20dp"
+                        android:background="@color/google_grey"
+                        android:layout_alignParentBottom="true"
+                        android:layout_height="0.5dp"/>
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </FrameLayout>
