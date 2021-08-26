@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_share -> ShareFragment()
                 else -> CleanFragment()
             }
-            supportFragmentManager.beginTransaction().replace(R.id.container, selectedFragment!!)
+            supportFragmentManager.beginTransaction().replace(R.id.container, selectedFragment)
                 .commit()
             true
         }
