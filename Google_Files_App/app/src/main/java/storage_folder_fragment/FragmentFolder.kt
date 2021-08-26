@@ -78,7 +78,6 @@ class FragmentFolder : Fragment(), OnSelect {
         }
         for (singleFile in files) {
 
-
             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
                     Locale.getDefault()
                 )
