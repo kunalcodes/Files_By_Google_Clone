@@ -9,7 +9,15 @@ import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.google_files_app.R
+import kotlinx.android.synthetic.main.item_view.*
 import java.io.File
+import java.util.*
+import kotlin.collections.ArrayList
+import android.graphics.BitmapFactory
+
+import android.graphics.Bitmap
+import androidx.core.view.isVisible
+import kotlinx.android.synthetic.main.fragment_browse.view.*
 
 
 class FolderAdapter(private val context: Context, private val file: ArrayList<File>, select: OnSelect) :
@@ -42,6 +50,15 @@ class FolderAdapter(private val context: Context, private val file: ArrayList<Fi
             select.onLongSelect(file[position])
             true
         })
+        if (file[position].name.lowercase(Locale.getDefault()).endsWith("jpeg") || file[position].name.lowercase(
+                Locale.getDefault()
+            )
+                .endsWith("jpg")
+            || file[position].name.lowercase(Locale.getDefault()).endsWith("png")){
+            val myBitmap = BitmapFactory.decodeFile(file[position].absolutePath)
+            holder.ivFolderImage.setImageBitmap(myBitmap)
+            holder.ivFolderImage.visibility = View.VISIBLE
+        }
     }
 
     override fun getItemCount(): Int {

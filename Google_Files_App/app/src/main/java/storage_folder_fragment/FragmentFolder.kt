@@ -14,6 +14,7 @@ import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import kotlinx.android.synthetic.main.item_view.*
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -76,6 +77,8 @@ class FragmentFolder : Fragment(), OnSelect {
             }
         }
         for (singleFile in files) {
+
+
             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
                     Locale.getDefault()
                 )
@@ -86,6 +89,7 @@ class FragmentFolder : Fragment(), OnSelect {
                     .endsWith(".mp4")
                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
             ) {
+
                 arrayList.add(singleFile)
             }
         }
