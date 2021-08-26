@@ -24,7 +24,7 @@ class BrowseFragment : Fragment(R.layout.fragment_browse) {
     private fun launchFirstFragment() {
         val fragmentTransaction = fragmentManager2.beginTransaction()
         val fragmentFolder = FragmentFolder()
-        fragmentTransaction.add(R.id.container, fragmentFolder, "tag").commit()
+        fragmentTransaction.add(R.id.container, fragmentFolder, "tag").addToBackStack("LaunchFolderFragment").commit()
     }
 
 
