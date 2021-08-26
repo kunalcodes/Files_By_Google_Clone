@@ -4,13 +4,11 @@
     android:id="@+id/mContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="5dp">
 
 
@@ -22,15 +20,17 @@
             android:padding="16dp"
             android:src="@drawable/folder" />
 
-        <ImageView
-            android:id="@+id/ivIcon"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_alignParentTop="true"
-            android:src="@drawable/folder"
-            android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ivIcon"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/folder"
+                android:visibility="gone" />
 
         <LinearLayout
+            android:id="@+id/linerLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/ivMoreOption"
@@ -53,8 +53,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="4dp"
+                android:layout_marginTop="4dp"
                 android:text="text"
                 android:textSize="12sp" />
+
 
         </LinearLayout>
 
@@ -71,11 +73,11 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dp"
-            android:layout_alignBottom="@id/ivFolderImage"
+            android:layout_alignBottom="@id/linerLayout"
             android:layout_toEndOf="@+id/ivFolderImage"
             android:background="@color/google_grey" />
 
-
     </RelativeLayout>
+
 
 </androidx.cardview.widget.CardView>
