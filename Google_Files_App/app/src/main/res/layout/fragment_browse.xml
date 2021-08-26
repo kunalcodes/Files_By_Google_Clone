@@ -260,13 +260,14 @@
                         android:text="40 MB"
                         android:textColor="@color/google_grey"
                         android:textSize="10sp" />
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/downladsIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/downladsIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
                 <RelativeLayout

@@ -11,7 +11,6 @@ import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.R
 import java.io.File
 import java.util.*
@@ -66,8 +65,8 @@ class FolderAdapter(
         ) {
 
             val myBitmap = BitmapFactory.decodeFile(file[position].absolutePath)
-            holder.ivFolderImage.setImageBitmap(myBitmap)
-            holder.ivFolderImage.visibility = View.VISIBLE
+            holder.ivPreviewImage.setImageBitmap(myBitmap)
+            holder.ivPreviewImage.visibility = View.VISIBLE
 
         }
         if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4")) {
@@ -75,10 +74,10 @@ class FolderAdapter(
                 file[position].absolutePath,
                 MediaStore.Video.Thumbnails.MICRO_KIND
             )
-            holder.ivFolderImage.setImageBitmap(bMap)
-            holder.ivFolderImage.visibility = View.VISIBLE
-        }
+            holder.ivPreviewImage.setImageBitmap(bMap)
+            holder.ivPreviewImage.visibility = View.VISIBLE
 
+        }
 
     }
 
