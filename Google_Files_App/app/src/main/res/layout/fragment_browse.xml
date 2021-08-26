@@ -622,17 +622,18 @@
                         android:text="Internal Storage"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tvInternalStorageSize"
-                        android:layout_toEndOf="@+id/internalStorageIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tvInternalStorage"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/internalStorageIcon"
                         android:text="48 GB free"
-                        android:textSize="10sp"
                         android:textColor="@color/google_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_toEndOf="@+id/internalStorageIcon"

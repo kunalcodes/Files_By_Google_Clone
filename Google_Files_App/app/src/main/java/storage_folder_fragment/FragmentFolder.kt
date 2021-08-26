@@ -70,26 +70,29 @@ class FragmentFolder : Fragment(), OnSelect {
 
     private fun findFiles(file: File?): ArrayList<File> {
         val arrayList = ArrayList<File>()
-        val files = file!!.listFiles()!!
+        val files = file?.listFiles()
+        if(files != null)
         for (singleFile in files) {
             if (singleFile.isDirectory && !singleFile.isHidden) {
                 arrayList.add(singleFile)
             }
         }
-        for (singleFile in files) {
+        if (files != null) {
+            for (singleFile in files) {
 
-            if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
-                    Locale.getDefault()
-                )
-                    .endsWith(".jpg")
-                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3") || singleFile.name.lowercase(
-                    Locale.getDefault()
-                )
-                    .endsWith(".mp4")
-                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
-            ) {
+                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
+                        Locale.getDefault()
+                    )
+                        .endsWith(".jpg")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3") || singleFile.name.lowercase(
+                        Locale.getDefault()
+                    )
+                        .endsWith(".mp4")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
+                ) {
 
-                arrayList.add(singleFile)
+                    arrayList.add(singleFile)
+                }
             }
         }
         return arrayList

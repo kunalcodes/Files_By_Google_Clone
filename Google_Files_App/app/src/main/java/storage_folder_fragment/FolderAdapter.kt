@@ -2,34 +2,34 @@ package storage_folder_fragment
 
 
 import android.content.Context
+import android.graphics.BitmapFactory
+import android.media.ThumbnailUtils
+import android.provider.MediaStore
 import android.text.format.Formatter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.R
 import java.io.File
 import java.util.*
-import kotlin.collections.ArrayList
-import android.graphics.BitmapFactory
-import android.provider.MediaStore
-
-import android.media.ThumbnailUtils
-import android.util.Log
-import android.os.StatFs
-
-import android.os.Environment
 
 
+class FolderAdapter(
+    private val context: Context,
+    private val file: ArrayList<File>,
+    select: FragmentFolder
 
-
-class FolderAdapter(private val context: Context, private val file: ArrayList<File>, select: OnSelect) :
+) :
     RecyclerView.Adapter<FolderViewHolder>() {
     private val select: OnSelect = select
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
-        return FolderViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false))
+        return FolderViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
+        )
     }
 
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
@@ -39,6 +39,7 @@ class FolderAdapter(private val context: Context, private val file: ArrayList<Fi
 
         if (file[position].isDirectory) {
             val files = file[position].listFiles()
+            if(files!= null)
             for (singleFile in files) {
                 if (!singleFile.isHidden) {
                     item++
@@ -50,7 +51,7 @@ class FolderAdapter(private val context: Context, private val file: ArrayList<Fi
             holder.mDate.text = "$item Files"
 
         } else {
-            holder.mDate.text = Formatter.formatShortFileSize(context ,file[position].length())
+            holder.mDate.text = Formatter.formatShortFileSize(context, file[position].length())
         }
         holder.mContainer.setOnClickListener(View.OnClickListener {
             select.onClick(file[position])
@@ -61,15 +62,19 @@ class FolderAdapter(private val context: Context, private val file: ArrayList<Fi
         })
         if (file[position].name.lowercase(Locale.getDefault()).endsWith("jpeg")
             || file[position].name.lowercase(Locale.getDefault()).endsWith("jpg")
-            || file[position].name.lowercase(Locale.getDefault()).endsWith("png")){
+            || file[position].name.lowercase(Locale.getDefault()).endsWith("png")
+        ) {
 
             val myBitmap = BitmapFactory.decodeFile(file[position].absolutePath)
             holder.ivFolderImage.setImageBitmap(myBitmap)
             holder.ivFolderImage.visibility = View.VISIBLE
 
         }
-        if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4") ){
-            val bMap = ThumbnailUtils.createVideoThumbnail(file[position].absolutePath, MediaStore.Video.Thumbnails.MICRO_KIND)
+        if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4")) {
+            val bMap = ThumbnailUtils.createVideoThumbnail(
+                file[position].absolutePath,
+                MediaStore.Video.Thumbnails.MICRO_KIND
+            )
             holder.ivFolderImage.setImageBitmap(bMap)
             holder.ivFolderImage.visibility = View.VISIBLE
         }
