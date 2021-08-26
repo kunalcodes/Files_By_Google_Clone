@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".Fragments.BrowseFragment">
 
     <ScrollView
@@ -478,13 +479,14 @@
                         android:textColor="@color/google_grey"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/appsIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/appsIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
             </LinearLayout>
