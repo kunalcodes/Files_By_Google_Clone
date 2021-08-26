@@ -14,8 +14,18 @@
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/fragment_clean.xml" value="0.1796875" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/layout/fragment_share.xml" value="0.26851851851851855" />
         <entry key="..\:/MASAI/AndroidStudioProjects/Unit3_BuildWeek/Google_Files_App/app/src/main/res/menu/bottom_navigation.xml" value="0.1796875" />
+        <entry key="app/src/main/res/drawable/ic_browse.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/ic_share.xml" value="0.26974358974358975" />
+        <entry key="app/src/main/res/drawable/roundedrectangle.xml" value="0.26974358974358975" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.18885869565217392" />
+        <entry key="app/src/main/res/layout/fragment_browse.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/fragment_clean.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/fragment_share.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/nav_header.xml" value="0.2578125" />
+        <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.2578125" />
+        <entry key="app/src/main/res/menu/nav_menu.xml" value="0.2578125" />
       </map>
     </option>
   </component>
