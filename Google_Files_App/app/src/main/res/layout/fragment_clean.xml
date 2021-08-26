@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.CleanFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hello_clean_fragment" />
+        android:background="#1a73e9"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="20dp"
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/ivInternalStorageIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="-20dp"
+            android:layout_alignBottom="@id/progressBar"
+            android:background="@drawable/internal_storage_white" />
+        <TextView
+            android:id="@+id/tvInternalStorageUsage"
+            android:layout_toEndOf="@+id/ivInternalStorageIcon"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            android:text="35.45 GB used"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_marginTop="5dp"
+            android:layout_below="@+id/tvInternalStorageUsage"
+            android:layout_toEndOf="@id/ivInternalStorageIcon"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:progressDrawable="@drawable/progress_internal_storage_bg"
+            android:layout_width="match_parent"
+            android:progress="40"
+            android:layout_height="10dp" />
+        <TextView
+            android:id="@+id/tvInternalStorageDetails"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/ivInternalStorageIcon"
+            android:layout_below="@id/progressBar"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:text="128 GB total • Internal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:background="@drawable/cleaning_suggestions_top"
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"/>
+
+    <ImageView
+        android:background="@drawable/cleaning_suggestions_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"/>
+</LinearLayout>
