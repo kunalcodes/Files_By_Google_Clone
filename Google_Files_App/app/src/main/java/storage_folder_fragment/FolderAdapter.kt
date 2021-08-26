@@ -18,6 +18,12 @@ import android.graphics.BitmapFactory
 import android.graphics.Bitmap
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.fragment_browse.view.*
+import android.provider.MediaStore
+
+import android.media.ThumbnailUtils
+
+
+
 
 
 class FolderAdapter(private val context: Context, private val file: ArrayList<File>, select: OnSelect) :
@@ -50,13 +56,18 @@ class FolderAdapter(private val context: Context, private val file: ArrayList<Fi
             select.onLongSelect(file[position])
             true
         })
-        if (file[position].name.lowercase(Locale.getDefault()).endsWith("jpeg") || file[position].name.lowercase(
-                Locale.getDefault()
-            )
-                .endsWith("jpg")
+        if (file[position].name.lowercase(Locale.getDefault()).endsWith("jpeg")
+            || file[position].name.lowercase(Locale.getDefault()).endsWith("jpg")
             || file[position].name.lowercase(Locale.getDefault()).endsWith("png")){
+
             val myBitmap = BitmapFactory.decodeFile(file[position].absolutePath)
             holder.ivFolderImage.setImageBitmap(myBitmap)
+            holder.ivFolderImage.visibility = View.VISIBLE
+
+        }
+        if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4") ){
+            val bMap = ThumbnailUtils.createVideoThumbnail(file[position].absolutePath, MediaStore.Video.Thumbnails.MICRO_KIND)
+            holder.ivFolderImage.setImageBitmap(bMap)
             holder.ivFolderImage.visibility = View.VISIBLE
         }
     }
