@@ -84,7 +84,7 @@ class FragmentFolder : Fragment(), OnSelect {
         if (files != null) {
             for (singleFile in files) {
 
-                /*  if (singleFile.name.lowercase(Locale.getDefault())
+                if (singleFile.name.lowercase(Locale.getDefault())
                         .endsWith(".jpeg") || singleFile.name.lowercase(
                         Locale.getDefault()
                     )
@@ -96,12 +96,14 @@ class FragmentFolder : Fragment(), OnSelect {
                     )
                         .endsWith(".mp4")
                     || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
-                ) {*/
+                ) {
 
-                arrayList.add(singleFile)
+                    arrayList.add(singleFile)
+                }
             }
-        }
 
+
+        }
         return arrayList
     }
 

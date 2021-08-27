@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.google_files_app.R
 import java.io.File
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -47,7 +48,10 @@ class FolderAdapter(
 
 
             }
-            holder.mDate.text = "$item Files"
+
+
+            holder.mDate.text =    SimpleDateFormat("dd-MM-yyyy").format(Date(file[position].lastModified()))
+
 
         } else {
             holder.mDate.text = Formatter.formatShortFileSize(context, file[position].length())
