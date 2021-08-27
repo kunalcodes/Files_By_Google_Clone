@@ -47,10 +47,10 @@ class FragmentCategories : Fragment(), OnSelect {
         if (bundle != null) {
             path = if (bundle.getString("type").equals("downloads")) {
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+
             } else {
                 Environment.getExternalStorageDirectory()
             }
-
 
         }
     }
