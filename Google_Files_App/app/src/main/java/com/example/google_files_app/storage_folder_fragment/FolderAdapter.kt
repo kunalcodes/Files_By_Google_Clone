@@ -47,7 +47,6 @@ class FolderAdapter(
                 }
             }
 
-
             holder.mDate.text =    SimpleDateFormat("dd MMM yyyy").format(Date(file[position].lastModified()))
 
 
