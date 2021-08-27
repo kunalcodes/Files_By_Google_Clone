@@ -113,8 +113,6 @@ class FragmentCategories : Fragment(), OnSelect {
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".apk")) {
                                 arrayList.add(singleFile)
 
-
-
                             }
                         "docs" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
@@ -122,7 +120,6 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
                             ) {
                                 arrayList.add(singleFile)
-
 
                             }
                         "downloads" ->

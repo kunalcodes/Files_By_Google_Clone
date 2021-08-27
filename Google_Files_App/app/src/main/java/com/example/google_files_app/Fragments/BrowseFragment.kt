@@ -159,7 +159,7 @@ class BrowseFragment : Fragment() , OnSelect {
            if (files != null) {
                for (singleFile in files) {
                    if (singleFile.isDirectory && !singleFile.isHidden) {
-                       arrayList.addAll(findFiles(singleFile))
+                /*       arrayList.addAll(findFiles(singleFile))
                    }else if(singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
                            Locale.getDefault()
                        )
@@ -167,7 +167,7 @@ class BrowseFragment : Fragment() , OnSelect {
                        || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3") || singleFile.name.lowercase(
                            Locale.getDefault())
                            .endsWith(".mp4")
-                       || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")){
+                       || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")){*/
 
                        arrayList.add(singleFile)
                    }

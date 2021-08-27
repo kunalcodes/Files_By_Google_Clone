@@ -82,10 +82,13 @@ class FolderAdapter(
             holder.ivPreviewImage.visibility = View.VISIBLE
 
         }
-        holder.mContainer.setOnClickListener(View.OnClickListener {
-            FileOpener.openFile(context, file[position])
+        if(!file[position].isDirectory) {
+            holder.mContainer.setOnClickListener(View.OnClickListener {
+                FileOpener.openFile(context, file[position])
 
-        })
+
+            })
+        }
 
     }
 
