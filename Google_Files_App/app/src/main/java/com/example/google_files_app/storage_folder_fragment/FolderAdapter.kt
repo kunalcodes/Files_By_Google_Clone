@@ -10,7 +10,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
+import com.example.google_files_app.FileOpener
 import com.example.google_files_app.R
 import java.io.File
 import java.text.SimpleDateFormat
@@ -80,6 +82,10 @@ class FolderAdapter(
             holder.ivPreviewImage.visibility = View.VISIBLE
 
         }
+        holder.mContainer.setOnClickListener(View.OnClickListener {
+            FileOpener.openFile(context, file[position])
+
+        })
 
     }
 

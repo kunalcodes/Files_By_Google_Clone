@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.google_files_app.FileOpener
 import com.example.google_files_app.R
 import com.example.google_files_app.storage_folder_fragment.FolderAdapter
 import com.example.google_files_app.storage_folder_fragment.FragmentFolder
@@ -88,23 +89,32 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
                             ) {
                                 arrayList.add(singleFile)
+
+
                             }
                         "video" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp4")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wav")
                             ) {
                                 arrayList.add(singleFile)
+
+
                             }
                         "audio" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
                             ) {
                                 arrayList.add(singleFile)
+
+
                             }
 
                         "apps" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".apk")) {
                                 arrayList.add(singleFile)
+
+
+
                             }
                         "docs" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
@@ -112,6 +122,8 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
                             ) {
                                 arrayList.add(singleFile)
+
+
                             }
                         "downloads" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
@@ -127,6 +139,7 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
                             ) {
                                 arrayList.add(singleFile)
+
                             }
                     }
                 }
