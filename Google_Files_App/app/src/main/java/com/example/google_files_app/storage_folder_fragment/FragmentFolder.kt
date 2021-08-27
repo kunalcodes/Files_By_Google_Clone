@@ -16,8 +16,6 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import java.io.File
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class FragmentFolder : Fragment(), OnSelect {
@@ -75,6 +73,7 @@ class FragmentFolder : Fragment(), OnSelect {
     private fun findFiles(file: File?): ArrayList<File> {
         val arrayList = ArrayList<File>()
         val files = file?.listFiles()
+
         if (files != null)
             for (singleFile in files) {
                 if (singleFile.isDirectory && !singleFile.isHidden) {
@@ -84,24 +83,11 @@ class FragmentFolder : Fragment(), OnSelect {
         if (files != null) {
             for (singleFile in files) {
 
-                if (singleFile.name.lowercase(Locale.getDefault())
-                        .endsWith(".jpeg") || singleFile.name.lowercase(
-                        Locale.getDefault()
-                    )
-                        .endsWith(".jpg")
-                    || singleFile.name.lowercase(Locale.getDefault())
-                        .endsWith(".wav") || singleFile.name.lowercase(Locale.getDefault())
-                        .endsWith(".mp3") || singleFile.name.lowercase(
-                        Locale.getDefault()
-                    )
-                        .endsWith(".mp4")
-                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
-                ) {
+                if (!singleFile.isDirectory) {
 
                     arrayList.add(singleFile)
                 }
             }
-
 
         }
         return arrayList
