@@ -45,16 +45,15 @@ class FolderAdapter(
                     item++
 
                 }
-
-
             }
 
 
-            holder.mDate.text =    SimpleDateFormat("dd-MMM-yyyy").format(Date(file[position].lastModified()))
+            holder.mDate.text =    SimpleDateFormat("dd MMM yyyy").format(Date(file[position].lastModified()))
 
 
         } else {
-            holder.mDate.text = Formatter.formatShortFileSize(context, file[position].length())
+            holder.mDate.text = Formatter.formatShortFileSize(context, file[position].length()) +" , "+
+                    SimpleDateFormat("dd MMM").format(Date(file[position].lastModified()))
         }
         holder.mContainer.setOnClickListener(View.OnClickListener {
             select.onClick(file[position])
