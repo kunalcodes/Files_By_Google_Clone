@@ -2,16 +2,11 @@ package com.example.google_files_app
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.Fragments.CleanFragment
 import com.example.google_files_app.Fragments.ShareFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
-import com.google.android.material.tabs.TabLayoutMediator
-
-import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {

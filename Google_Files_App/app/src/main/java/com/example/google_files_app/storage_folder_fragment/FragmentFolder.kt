@@ -1,4 +1,4 @@
-package storage_folder_fragment
+package com.example.google_files_app.storage_folder_fragment
 
 import android.Manifest
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.google_files_app.FileOpener
 import com.example.google_files_app.R
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
-import kotlinx.android.synthetic.main.item_view.*
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
@@ -31,8 +31,12 @@ class FragmentFolder : Fragment(), OnSelect {
         runTimePermission()
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val  view = inflater.inflate(R.layout.fragment_folder,container,false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_folder, container, false)
         buildList()
 
         return view
@@ -42,7 +46,7 @@ class FragmentFolder : Fragment(), OnSelect {
         val internalStorage = System.getenv("EXTERNAL_STORAGE")!!
         storage = File(internalStorage)
         try {
-            val  data = requireArguments().getString("path").toString()
+            val data = requireArguments().getString("path").toString()
             val file = File(data)
             storage = file
         } catch (e: Exception) {
@@ -71,20 +75,23 @@ class FragmentFolder : Fragment(), OnSelect {
     private fun findFiles(file: File?): ArrayList<File> {
         val arrayList = ArrayList<File>()
         val files = file?.listFiles()
-        if(files != null)
-        for (singleFile in files) {
-            if (singleFile.isDirectory && !singleFile.isHidden) {
-                arrayList.add(singleFile)
+        if (files != null)
+            for (singleFile in files) {
+                if (singleFile.isDirectory && !singleFile.isHidden) {
+                    arrayList.add(singleFile)
+                }
             }
-        }
         if (files != null) {
             for (singleFile in files) {
 
-                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
+                if (singleFile.name.lowercase(Locale.getDefault())
+                        .endsWith(".jpeg") || singleFile.name.lowercase(
                         Locale.getDefault()
                     )
                         .endsWith(".jpg")
-                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3") || singleFile.name.lowercase(
+                    || singleFile.name.lowercase(Locale.getDefault())
+                        .endsWith(".wav") || singleFile.name.lowercase(Locale.getDefault())
+                        .endsWith(".mp3") || singleFile.name.lowercase(
                         Locale.getDefault()
                     )
                         .endsWith(".mp4")
@@ -108,13 +115,13 @@ class FragmentFolder : Fragment(), OnSelect {
         fileList = java.util.ArrayList()
         fileList.addAll(findFiles(storage))
 
-        val  adapter = context?.let { FolderAdapter(it, fileList, this) }
+        val adapter = context?.let { FolderAdapter(it, fileList, this) }
         mRecyclerView?.adapter = adapter
 
 
     }
 
-    override  fun onClick(file: File?) {
+    override fun onClick(file: File?) {
         if (file != null) {
             if (file.isDirectory) {
                 val bundle = Bundle()
@@ -123,10 +130,11 @@ class FragmentFolder : Fragment(), OnSelect {
                 blankFragment.arguments = bundle
                 requireFragmentManager().beginTransaction().replace(R.id.container, blankFragment)
                     .addToBackStack(null).commit()
+            } else {
+                FileOpener.openFile(requireContext(), file)
             }
         }
     }
-
 
 
     override fun onLongSelect(file: File?) {}

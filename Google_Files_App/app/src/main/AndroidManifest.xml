@@ -14,9 +14,7 @@
         android:roundIcon="@drawable/ic_google_files"
         android:supportsRtl="true"
         android:theme="@style/Theme.Google_Files_App">
-        <activity
-            android:name="storage_folder_fragment.InternalStorage"
-            android:exported="true" />
+
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -35,6 +33,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:authorities="${applicationId}.provider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_path">
+
+            </meta-data>
+        </provider>
     </application>
 
 </manifest>

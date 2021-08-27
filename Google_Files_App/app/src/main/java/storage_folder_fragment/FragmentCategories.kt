@@ -6,13 +6,13 @@ import android.os.Environment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.R
+import com.example.google_files_app.storage_folder_fragment.FolderAdapter
+import com.example.google_files_app.storage_folder_fragment.FragmentFolder
+import com.example.google_files_app.storage_folder_fragment.OnSelect
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken

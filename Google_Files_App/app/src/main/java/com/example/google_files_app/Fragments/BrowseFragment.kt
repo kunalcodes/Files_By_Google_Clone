@@ -12,22 +12,22 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.google_files_app.R
+import com.example.google_files_app.storage_folder_fragment.FolderAdapter
+import com.example.google_files_app.storage_folder_fragment.FragmentFolder
+import com.example.google_files_app.storage_folder_fragment.OnSelect
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.fragment_browse.*
-import storage_folder_fragment.FolderAdapter
 import storage_folder_fragment.FragmentCategories
-import storage_folder_fragment.FragmentFolder
-import storage_folder_fragment.OnSelect
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class BrowseFragment : Fragment() ,OnSelect {
+class BrowseFragment : Fragment() , OnSelect {
     private lateinit var fragmentManager2: FragmentManager
     var storage: File? = null
     private var fileList = ArrayList<File>()

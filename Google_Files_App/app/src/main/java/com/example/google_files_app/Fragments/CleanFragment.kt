@@ -46,7 +46,7 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
             tvInternalStorageUsage.text = df.format(size).toString() + suffix
         }
         val statFs = Environment.getStorageDirectory().totalSpace
-        val memory = " GB . Internal"
+        val memory = " GB • Internal"
         val totalStorage = size + statFs
 
 
