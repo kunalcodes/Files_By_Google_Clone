@@ -294,17 +294,18 @@
                         android:text="Images"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tvImagesSize"
-                        android:layout_toEndOf="@+id/imagesIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tvImages"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/imagesIcon"
                         android:text="44 MB"
-                        android:textSize="10sp"
                         android:textColor="@color/google_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp" />
                     <View
                         android:layout_width="match_parent"
                         android:layout_toEndOf="@+id/imagesIcon"
