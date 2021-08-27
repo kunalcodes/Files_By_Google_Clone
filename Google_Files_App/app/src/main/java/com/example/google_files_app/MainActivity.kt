@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private val navListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
+
             selectedFragment = when (item.itemId) {
                 R.id.nav_clean -> CleanFragment()
                 R.id.nav_browse -> BrowseFragment()
@@ -40,4 +41,3 @@ class MainActivity : AppCompatActivity() {
             true
         }
 }
-

@@ -17,8 +17,7 @@ class ShareFragment : Fragment() {
     val FINE_LOCATION_REQ = 101
     val WIFI_RQ = 102
     val BLUETOOTH_REQ = 103
-
-
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
