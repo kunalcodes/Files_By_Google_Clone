@@ -13,8 +13,7 @@ class FileOpener {
             val selectedFile = file
             val uri = FileProvider.getUriForFile(
                 context,
-                context.applicationContext.packageName + ".provider",
-                file
+                context.applicationContext.packageName + ".provider", file
             )
             val intent = Intent(Intent.ACTION_VIEW)
             if (uri.toString().contains(".doc")) {

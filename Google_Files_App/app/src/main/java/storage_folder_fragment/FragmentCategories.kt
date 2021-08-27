@@ -3,16 +3,17 @@ package storage_folder_fragment
 import android.Manifest
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.FileOpener
 import com.example.google_files_app.R
 import com.example.google_files_app.storage_folder_fragment.FolderAdapter
 import com.example.google_files_app.storage_folder_fragment.FragmentFolder
+import com.example.google_files_app.storage_folder_fragment.FragmentListener
 import com.example.google_files_app.storage_folder_fragment.OnSelect
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
@@ -25,20 +26,41 @@ import kotlin.collections.ArrayList
 
 
 class FragmentCategories : Fragment(), OnSelect {
+    private val mFragmentListener: FragmentListener? = null
+    var imageSize: Long = 0
+    var videoSize: Long = 0
+    var docSize: Long = 0
+    var audioSize: Long = 0
+    var appSize: Long = 0
+    var downloadSize: Long = 0
 
-    private var storage: File? = null
     private var fileList = ArrayList<File>()
     var path: File? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         runTimePermission()
+
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val  view = inflater.inflate(R.layout.fragment_categories,container,false)
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_categories, container, false)
         buildList()
 
+        val bundle = Bundle()
+        bundle.putLong("imageSize", imageSize)
+        bundle.putString("videoSize", videoSize.toString())
+        bundle.putString("docSize", docSize.toString())
+        bundle.putString("audioSize", audioSize.toString())
+        bundle.putString("appSize", appSize.toString())
+        bundle.putString("downloadSize", downloadSize.toString())
+        mFragmentListener?.onFragmentDataPassed(bundle)
+        Log.d("abcd", downloadSize.toString())
         return view
     }
 
@@ -79,6 +101,7 @@ class FragmentCategories : Fragment(), OnSelect {
         val files = file?.listFiles()
         if (files != null) {
             for (singleFile in files) {
+
                 if (singleFile.isDirectory && !singleFile.isHidden) {
                     arrayList.addAll(findFiles(singleFile))
                 } else {
@@ -89,7 +112,7 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
                             ) {
                                 arrayList.add(singleFile)
-
+                                imageSize += singleFile.length()
 
                             }
                         "video" ->
@@ -97,7 +120,7 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wav")
                             ) {
                                 arrayList.add(singleFile)
-
+                                videoSize += singleFile.length()
 
                             }
                         "audio" ->
@@ -105,14 +128,14 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
                             ) {
                                 arrayList.add(singleFile)
-
+                                audioSize += singleFile.length()
 
                             }
 
                         "apps" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".apk")) {
                                 arrayList.add(singleFile)
-
+                                appSize += singleFile.length()
                             }
                         "docs" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
@@ -120,7 +143,7 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
                             ) {
                                 arrayList.add(singleFile)
-
+                                docSize += singleFile.length()
                             }
                         "downloads" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
@@ -136,22 +159,25 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
                             ) {
                                 arrayList.add(singleFile)
+                                downloadSize += singleFile.length()
 
                             }
                     }
                 }
             }
+
         }
 
         return arrayList
     }
 
     private fun displayFile() {
+        Log.d("videoSize", videoSize.toString())
 
         val mRecyclerView: RecyclerView? = requireView().findViewById(R.id.recyclerviewCategories)
         mRecyclerView?.setHasFixedSize(true)
         if (mRecyclerView != null) {
-            mRecyclerView.layoutManager = LinearLayoutManager(context )
+            mRecyclerView.layoutManager = LinearLayoutManager(context)
         }
         fileList = java.util.ArrayList()
         fileList.addAll(findFiles(path))
@@ -177,4 +203,6 @@ class FragmentCategories : Fragment(), OnSelect {
 
 
     override fun onLongSelect(file: File?) {}
+
+
 }
