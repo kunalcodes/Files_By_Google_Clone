@@ -22,6 +22,7 @@ import java.util.*
 class FolderAdapter(
     private val context: Context,
     private val file: ArrayList<File>,
+
     select: FragmentFolder
 
 ) :
@@ -84,6 +85,7 @@ class FolderAdapter(
         }
         if(!file[position].isDirectory) {
             holder.mContainer.setOnClickListener(View.OnClickListener {
+
                 FileOpener.openFile(context, file[position])
 
 

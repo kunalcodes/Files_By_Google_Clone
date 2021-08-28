@@ -10,10 +10,8 @@ class FileOpener {
     companion object {
         fun openFile(context: Context, file: File) {
             val selectedFile = file
-            val uri = FileProvider.getUriForFile(
-                context,
-                context.applicationContext.packageName + ".provider", file
-            )
+            val uri = FileProvider.getUriForFile(context,
+                context.applicationContext.packageName + ".provider", file)
             val intent = Intent(Intent.ACTION_VIEW)
             if (uri.toString().contains(".doc")) {
                 intent.setDataAndType(uri, "application/msword")
@@ -27,6 +25,7 @@ class FileOpener {
                 || uri.toString().contains(".wma")
             ) {
                 intent.setDataAndType(uri, "audio/x-wav")
+                intent.action = Intent.ACTION_QUICK_VIEW
 
             } else if (uri.toString().contains(".jpeg")
                 || uri.toString().contains(".jpg")

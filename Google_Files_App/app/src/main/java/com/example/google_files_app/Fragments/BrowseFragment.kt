@@ -3,7 +3,6 @@ package com.example.google_files_app.Fragments
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -23,37 +22,31 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.fragment_browse.*
+import storage_folder_fragment.FileSize
 import storage_folder_fragment.FragmentCategories
 import java.io.File
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class BrowseFragment : Fragment(), OnSelect {
     private lateinit var fragmentManager2: FragmentManager
     var storage: File? = null
+
     private var fileList = ArrayList<File>()
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onClickOfCategories()
         runTimePermission()
-        buildList()
-
-        val bundle = arguments
-        if (bundle != null) {
-            tvDownloadsSize.text = bundle.getString("downloadSize")
-        }
-        if (bundle != null) {
-            Log.d("video", bundle.getString("downloadSize").toString())
-        }
-
 
         layoutStorageInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
             launchFirstFragment()
         }
+
+
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,8 +54,8 @@ class BrowseFragment : Fragment(), OnSelect {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_browse, container, false)
-        buildList()
 
+        buildList()
 
         return view
     }
@@ -144,6 +137,7 @@ class BrowseFragment : Fragment(), OnSelect {
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
     }
 
     private fun runTimePermission() {
@@ -169,26 +163,68 @@ class BrowseFragment : Fragment(), OnSelect {
     private fun findFiles(file: File?): ArrayList<File> {
         val arrayList = ArrayList<File>()
         val files = file?.listFiles()
+
         if (files != null) {
             for (singleFile in files) {
-                if (singleFile.isDirectory && !singleFile.isHidden) {
-                    /*       arrayList.addAll(findFiles(singleFile))
-                       }else if(singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg") || singleFile.name.lowercase(
-                               Locale.getDefault()
-                           )
-                               .endsWith(".jpg")
-                           || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3") || singleFile.name.lowercase(
-                               Locale.getDefault())
-                               .endsWith(".mp4")
-                           || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")){*/
 
-                    arrayList.add(singleFile)
+/*
+                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
+                ) {
+                    imageSize += singleFile.length()
                 }
+                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp4")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wav")
+                ) {
+                    videoSize += singleFile.length()
+                }
+                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
+                ) {
+                    audioSize += singleFile.length()
+                }
+                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".apk")) {
+                    appSize += singleFile.length()
+                }
+                if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".doc")
+                    || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
+                ) {
+                    docSize += singleFile.length()
+                }*/
+
+                arrayList.add(singleFile)
             }
         }
-        arrayList.sortWith(Comparator.comparing(File::lastModified).reversed())
+
+        if (file != null) {
+            Log.d("tag", FileSize.getVideoSize(file).toString())
+            tvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
+            tvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
+            tvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
+            tvAudioSize.text = sizeFormat(FileSize.getAudioSize(file))
+            tvAppsSize.text = sizeFormat(FileSize.getAppSize(file))
+            tvDownloadsSize.text = sizeFormat(FileSize.getDownloadSize(file))
+
+
+        }
         return arrayList
     }
+
+    private fun sizeFormat(long: Long) : String{
+
+        if(long < 1000){
+           return  "$long B"
+        }else if(long > 1000 && long < 1000*1000){
+           return (long/1024).toString() + " KB"
+        }else if(long > 1000*1000 && long < 1000*1024*1024){
+            return (long /(1000*1000)).toString() + " MB"
+        }
+            return (long /(1000*1024*1024)).toString() + " GB"
+
+    }
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun displayFile() {
@@ -220,7 +256,9 @@ class BrowseFragment : Fragment(), OnSelect {
         }
     }
 
-
     override fun onLongSelect(file: File?) {}
 
+
 }
+
+
