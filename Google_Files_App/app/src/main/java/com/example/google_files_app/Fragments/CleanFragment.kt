@@ -4,6 +4,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
+import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
@@ -14,6 +15,8 @@ import kotlinx.android.synthetic.main.fragment_browse.*
 import kotlinx.android.synthetic.main.fragment_clean.*
 import java.io.File
 import kotlin.math.abs
+import kotlin.math.roundToInt
+import kotlin.math.roundToLong
 
 
 class CleanFragment : Fragment(R.layout.fragment_clean) {
@@ -23,8 +26,9 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvInternalStorageUsage.text = freeMemory().toString() + " GB used"
+        tvInternalStorageUsage.text = busyMemory().toString() + " GB used"
         tvInternalStorageDetails.text = totalMemory().toString() + " GB total • Internal"
+        progressBar.setProgress(usedMemoryPercentage(), false)
         cleanInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
             launchFirstFragment()
@@ -47,17 +51,18 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
         return abs(statFs.blockCount * statFs.blockSize/(1024*1024*100)).toLong()
     }
 
-    fun freeMemory(): Long {
+    fun usedMemoryPercentage(): Int {
         val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+        val total = abs(statFs.blockCount * statFs.blockSize/(1024*1024*100)).toLong()
+        val free =  (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+        return (((total.toDouble()-free.toDouble())*100/total.toDouble()).roundToInt())
     }
     fun busyMemory(): Long {
-        var statFs = StatFs(Environment.getExternalStorageDirectory().absolutePath)
 
-        // val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        val total = (statFs.blockCount * statFs.blockSize).toLong()
-        val free = (statFs.availableBlocks * statFs.blockSize).toLong()
-        return abs((total - free) / (1024*1024*100))
+        val statFs = StatFs(Environment.getRootDirectory().absolutePath)
+        val total = abs(statFs.blockCount * statFs.blockSize/(1024*1024*100)).toLong()
+        val free =  (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+        return (total - free)
     }
 
 }
