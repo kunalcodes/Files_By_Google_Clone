@@ -3,6 +3,8 @@ package com.example.google_files_app.Fragments
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.os.StatFs
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +27,7 @@ import kotlinx.android.synthetic.main.fragment_browse.*
 import storage_folder_fragment.FileSize
 import storage_folder_fragment.FragmentCategories
 import java.io.File
+import kotlin.math.abs
 
 
 class BrowseFragment : Fragment(), OnSelect {
@@ -38,13 +41,17 @@ class BrowseFragment : Fragment(), OnSelect {
         super.onViewCreated(view, savedInstanceState)
         onClickOfCategories()
         runTimePermission()
-
+        tvInternalStorageSize.text = freeMemory().toString() +" GB free"
         layoutStorageInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
             launchFirstFragment()
         }
 
 
+    }
+    fun freeMemory(): Long {
+        val statFs = StatFs(Environment.getRootDirectory().absolutePath)
+        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
     }
 
 

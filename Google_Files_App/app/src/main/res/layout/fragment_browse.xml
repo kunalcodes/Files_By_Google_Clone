@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white"
     tools:context=".Fragments.BrowseFragment">
 
@@ -18,11 +18,11 @@
             <TextView
                 android:id="@+id/tvBrowseRecent"
                 android:layout_width="wrap_content"
-                android:text="Recent"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:textAllCaps="true"
-                android:layout_height="wrap_content"/>
+                android:layout_marginTop="20dp"
+                android:text="Recent"
+                android:textAllCaps="true" />
 
             <HorizontalScrollView
                 android:id="@+id/svRecentList"
@@ -218,25 +218,25 @@
 
             <LinearLayout
                 android:id="@+id/layoutCategoriesList"
-                android:layout_below="@+id/tvBrowseCategories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBrowseCategories"
                 android:layout_marginVertical="20dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/layoutCategoryDownloads"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/downladsIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/downloads"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"/>
+                        android:background="@drawable/downloads" />
 
                     <TextView
                         android:id="@+id/tvDownloads"
@@ -272,17 +272,17 @@
 
                 <RelativeLayout
                     android:id="@+id/layoutCategoryImages"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/imagesIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/images"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"/>
+                        android:background="@drawable/images" />
 
                     <TextView
                         android:id="@+id/tvImages"
@@ -306,28 +306,29 @@
                         android:text="44 MB"
                         android:textColor="@color/google_grey"
                         android:textSize="10sp" />
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/imagesIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/imagesIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layoutCategoryVideos"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/videosIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/videos"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"/>
+                        android:background="@drawable/videos" />
 
                     <TextView
                         android:id="@+id/tvVideos"
@@ -339,31 +340,33 @@
                         android:text="Videos"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tvVideosSize"
-                        android:layout_toEndOf="@+id/videosIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tvVideos"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/videosIcon"
                         android:text="1.2 GB"
-                        android:textSize="10sp"
                         android:textColor="@color/google_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp" />
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/videosIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/videosIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layoutCategoryAudio"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/audioIcon"
@@ -383,39 +386,41 @@
                         android:text="Audio"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tvAudioSize"
-                        android:layout_toEndOf="@+id/audioIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tvAudio"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/audioIcon"
                         android:text="205 MB"
-                        android:textSize="10sp"
                         android:textColor="@color/google_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp" />
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/audioIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/audioIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layoutCategoryDocuments"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/documentsIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/documents"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"/>
+                        android:background="@drawable/documents" />
 
                     <TextView
                         android:id="@+id/tvDocuments"
@@ -427,39 +432,41 @@
                         android:text="Documents &amp; other"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tvDocumentsSize"
-                        android:layout_toEndOf="@+id/documentsIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tvDocuments"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/documentsIcon"
                         android:text="290 MB"
-                        android:textSize="10sp"
                         android:textColor="@color/google_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp" />
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/documentsIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/documentsIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/layoutCategoryApps"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/appsIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/apps"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"/>
+                        android:background="@drawable/apps" />
 
                     <TextView
                         android:id="@+id/tvApps"
@@ -471,17 +478,18 @@
                         android:text="Apps"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
+
                     <TextView
                         android:id="@+id/tvAppsSize"
-                        android:layout_toEndOf="@+id/appsIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_below="@id/tvApps"
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="2dp"
+                        android:layout_toEndOf="@+id/appsIcon"
                         android:text="4.8 GB"
-                        android:textSize="10sp"
                         android:textColor="@color/google_grey"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textSize="10sp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -549,8 +557,8 @@
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/cvSafe"
@@ -585,34 +593,34 @@
             <TextView
                 android:id="@+id/tvBrowseStorageDevices"
                 android:layout_width="wrap_content"
-                android:text="Storage Devices"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/svCollectionList"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
-                android:textAllCaps="true"
-                android:layout_height="wrap_content"/>
+                android:layout_marginTop="20dp"
+                android:text="Storage Devices"
+                android:textAllCaps="true" />
 
             <LinearLayout
                 android:id="@+id/layoutStorageDeviceList"
-                android:layout_below="@+id/tvBrowseStorageDevices"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBrowseStorageDevices"
                 android:layout_marginVertical="20dp"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/layoutStorageInternal"
-                    android:paddingStart="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp">
 
                     <ImageView
                         android:id="@+id/internalStorageIcon"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_centerVertical="true"
                         android:layout_marginVertical="10dp"
-                        android:background="@drawable/internal_storage"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"/>
+                        android:background="@drawable/internal_storage" />
 
                     <TextView
                         android:id="@+id/tvInternalStorage"
@@ -636,13 +644,14 @@
                         android:text="48 GB free"
                         android:textColor="@color/google_grey"
                         android:textSize="10sp" />
+
                     <View
                         android:layout_width="match_parent"
-                        android:layout_toEndOf="@+id/internalStorageIcon"
-                        android:layout_marginStart="20dp"
-                        android:background="@color/google_grey"
+                        android:layout_height="0.5dp"
                         android:layout_alignParentBottom="true"
-                        android:layout_height="0.5dp"/>
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/internalStorageIcon"
+                        android:background="@color/google_grey" />
                 </RelativeLayout>
 
             </LinearLayout>
