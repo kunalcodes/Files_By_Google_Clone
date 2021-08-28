@@ -3,6 +3,8 @@ package com.example.google_files_app.Fragments
 import android.Manifest
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
+import android.os.StatFs
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +41,8 @@ class BrowseFragment : Fragment(), OnSelect {
         onClickOfCategories()
         runTimePermission()
 
+        tvInternalStorageSize.text = freeMemory().toString() +" GB free"
+
         layoutStorageInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
             launchFirstFragment()
@@ -46,7 +50,10 @@ class BrowseFragment : Fragment(), OnSelect {
 
 
     }
-
+    fun freeMemory(): Long {
+        val statFs = StatFs(Environment.getRootDirectory().absolutePath)
+        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

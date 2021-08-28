@@ -15,6 +15,7 @@ class FileSize {
             if(files != null ) {
                 val count = files.size
                 for (i in 0 until count) {
+                    if (!files[i].isHidden)
                     videoLength += if (files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".mp4")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".flv")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".avi")
@@ -37,6 +38,7 @@ class FileSize {
             if(files != null ) {
                 val count = files.size
                 for (i in 0 until count) {
+                    if (!files[i].isHidden)
                     imageLength+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".jpeg")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".jpg")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".png")
@@ -44,6 +46,7 @@ class FileSize {
 
                         files[i].length()
                     }
+
 
                     else {
                         getImageSize(files[i])
@@ -59,6 +62,7 @@ class FileSize {
             if(files != null ) {
                 val count = files.size
                 for (i in 0 until count) {
+                    if (!files[i].isHidden)
                     docLength+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".doc")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".pdf")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".xls")
@@ -81,6 +85,7 @@ class FileSize {
             if(files != null ) {
                 val count = files.size
                 for (i in 0 until count) {
+                    if (!files[i].isHidden)
                     audioSize+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".mp3")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".m4a")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".wma")
@@ -103,6 +108,7 @@ class FileSize {
             if(files != null ) {
                 val count = files.size
                 for (i in 0 until count) {
+                    if (!files[i].isHidden)
                     appSize+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".apk"))){
 
                         files[i].length()
@@ -123,6 +129,7 @@ class FileSize {
                 val count = files.size
 
                     for (i in 0 until count) {
+                        if (!files[i].isHidden)
                         downloadSize += if (files[i].isFile) {
 
                             files[i].length()
