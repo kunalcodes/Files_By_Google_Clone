@@ -85,7 +85,6 @@ class FragmentCategories : Fragment(), OnSelect {
     }
 
     private fun findFiles(file: File?): ArrayList<File> {
-
         val arrayList = ArrayList<File>()
         val files = file?.listFiles()
         if (files != null) {
@@ -99,15 +98,17 @@ class FragmentCategories : Fragment(), OnSelect {
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".bmp")
                             ) {
                                 arrayList.add(singleFile)
 
                             }
                         "video" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp4")
-                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wav")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mkv")
-
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".flv")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".avi")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".gif")
                             ) {
                                 arrayList.add(singleFile)
 
@@ -115,48 +116,37 @@ class FragmentCategories : Fragment(), OnSelect {
                         "audio" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wav")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wma")
                             ) {
                                 arrayList.add(singleFile)
 
                             }
 
                         "apps" ->
-                            if (singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".apk")
-                            ) {
+                            if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".apk")) {
                                 arrayList.add(singleFile)
                             }
                         "docs" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".doc")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".xml")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".doc")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xls")
                             ) {
                                 arrayList.add(singleFile)
                             }
                         "downloads" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".jpg")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".png")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".mp4")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".wav")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".apk")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".pdf")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".doc")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".xml")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".mp3")
-                                || singleFile.name.lowercase(Locale.getDefault())
-                                    .endsWith(".m4a")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp4")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".wav")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".apk")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".pdf")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".doc")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
                             ) {
                                 arrayList.add(singleFile)
 
@@ -169,7 +159,6 @@ class FragmentCategories : Fragment(), OnSelect {
 
         return arrayList
     }
-
     private fun displayFile() {
 
         val mRecyclerView: RecyclerView? =
