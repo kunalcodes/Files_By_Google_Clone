@@ -199,7 +199,7 @@ class BrowseFragment : Fragment(), OnSelect {
         }
 
         if (file != null) {
-            Log.d("tag", FileSize.getVideoSize(file).toString())
+            Log.d("Tag", FileSize.getVideoSize(file).toString())
             tvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
             tvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
             tvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
