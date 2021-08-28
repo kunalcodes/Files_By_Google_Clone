@@ -7,21 +7,107 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                android:elevation="4dp"
+                android:paddingVertical="20dp">
+
+                <ImageView
+                    android:id="@+id/ivSearch"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignBaseline="@+id/ivLogo"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginVertical="20dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/ic_search" />
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:itemIconTint="@color/white"
+            app:menu="@menu/nav_menu">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:padding="20dp"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Privacy Policy"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:text="Terms of service"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </com.google.android.material.navigation.NavigationView>
+
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+
     <RelativeLayout
         android:id="@+id/layoutTopBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/ivMenu"
-            android:layout_width="25dp"
-            android:layout_height="30dp"
-            android:layout_alignBaseline="@+id/ivLogo"
-            android:layout_alignParentStart="true"
-            android:layout_marginVertical="20dp"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/ic_menu_hamburger" />
+        <!--        <ImageView-->
+        <!--            android:id="@+id/ivMenu"-->
+        <!--            android:layout_width="25dp"-->
+        <!--            android:layout_height="30dp"-->
+        <!--            android:layout_alignBaseline="@+id/ivLogo"-->
+        <!--            android:layout_alignParentStart="true"-->
+        <!--            android:layout_marginVertical="20dp"-->
+        <!--            android:layout_marginLeft="20dp"-->
+        <!--            android:background="@drawable/ic_menu_hamburger" />-->
 
         <ImageView
             android:id="@+id/ivLogo"
@@ -30,15 +116,6 @@
             android:layout_centerInParent="true"
             android:background="@drawable/ic_google_files_with_text" />
 
-        <ImageView
-            android:id="@+id/ivSearch"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignBaseline="@+id/ivLogo"
-            android:layout_alignParentEnd="true"
-            android:layout_marginVertical="20dp"
-            android:layout_marginRight="15dp"
-            android:background="@drawable/ic_search" />
 
     </RelativeLayout>
 
@@ -62,62 +139,13 @@
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:layout_below="@id/layoutTopBar"
-        android:background="@drawable/shadow"/>
+        android:background="@drawable/shadow" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:layout_above="@id/bottomNavigation"
-        android:background="@drawable/shadow"/>
+        android:background="@drawable/shadow" />
 
-    <androidx.drawerlayout.widget.DrawerLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/drawer_layout"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start"
-        >
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/nav_header"
-            app:itemIconTint="@color/white"
-            app:menu="@menu/nav_menu">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:orientation="horizontal"
-                android:weightSum="2"
-                android:padding="20dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Privacy Policy"
-                    android:textSize="16sp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Terms of service"
-                    android:textSize="16sp"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"/>
-
-            </LinearLayout>
-
-
-        </com.google.android.material.navigation.NavigationView>
-
-
-
-    </androidx.drawerlayout.widget.DrawerLayout>
 
 </RelativeLayout>

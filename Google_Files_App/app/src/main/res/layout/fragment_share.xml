@@ -8,8 +8,8 @@
         android:layout_width="250dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:src="@drawable/share"
-        android:layout_marginTop="120dp" />
+        android:layout_marginTop="120dp"
+        android:src="@drawable/share" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,26 +29,25 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btSend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
-            android:text="Send"
-            android:textColor="@color/white"
-            android:id="@+id/btSend"
             android:background="@drawable/roundedrectangle"
+            android:text="Send"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="18sp" />
 
         <Button
+            android:id="@+id/btReceive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Receive"
-            android:textColor="@color/white"
-            android:id="@+id/btReceive"
             android:background="@drawable/roundedrectangle"
+            android:text="Receive"
             android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="18sp" />
-
 
     </LinearLayout>
 
