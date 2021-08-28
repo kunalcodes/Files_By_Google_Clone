@@ -1,5 +1,6 @@
 package com.example.google_files_app
 
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         })
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener)
-        supportFragmentManager.beginTransaction().replace(R.id.container, CleanFragment())
+        bottomNavigationView.selectedItemId = R.id.nav_browse
+        supportFragmentManager.beginTransaction().replace(R.id.container, BrowseFragment(), "MY_FRAGMENT")
             .commit()
 
         val drawerNavigationView = findViewById<NavigationView>(R.id.nav_view)
@@ -39,15 +41,20 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
     }
 
+
     private val navListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.nav_browse -> ivSearch.visibility = View.VISIBLE
+                else -> ivSearch.visibility = View.GONE
+            }
             selectedFragment = when (item.itemId) {
                 R.id.nav_clean -> CleanFragment()
                 R.id.nav_browse -> BrowseFragment()
                 R.id.nav_share -> ShareFragment()
                 else -> CleanFragment()
             }
-            supportFragmentManager.beginTransaction().replace(R.id.container, selectedFragment)
+            supportFragmentManager.beginTransaction().replace(R.id.container, selectedFragment, "MY_FRAGMENT")
                 .commit()
             true
         }

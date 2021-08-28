@@ -16,7 +16,9 @@ class FileSize {
                 val count = files.size
                 for (i in 0 until count) {
                     videoLength += if (files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".mp4")
-                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".wav")
+                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".flv")
+                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".avi")
+                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".gif")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".mkv"))) {
                             files[i].length()
                     } else {
@@ -37,7 +39,7 @@ class FileSize {
                 for (i in 0 until count) {
                     imageLength+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".jpeg")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".jpg")
-                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".gif")
+                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".png")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".bmp"))){
 
                         files[i].length()
@@ -59,6 +61,7 @@ class FileSize {
                 for (i in 0 until count) {
                     docLength+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".doc")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".pdf")
+                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".xls")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".xml"))){
 
                         files[i].length()
@@ -80,6 +83,7 @@ class FileSize {
                 for (i in 0 until count) {
                     audioSize+= if(files[i].isFile &&( files[i].name.lowercase(Locale.getDefault()).endsWith(".mp3")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".m4a")
+                                ||files[i].name.lowercase(Locale.getDefault()).endsWith(".wma")
                                 ||files[i].name.lowercase(Locale.getDefault()).endsWith(".wav"))){
 
                         files[i].length()
