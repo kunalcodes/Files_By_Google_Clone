@@ -84,6 +84,7 @@ class FolderAdapter(
         }
         if(!file[position].isDirectory) {
             holder.mContainer.setOnClickListener(View.OnClickListener {
+
                 FileOpener.openFile(context, file[position])
 
 

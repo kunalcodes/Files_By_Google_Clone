@@ -4,12 +4,10 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.example.google_files_app.R
-import kotlinx.android.synthetic.main.fragment_browse.*
 import kotlinx.android.synthetic.main.fragment_clean.*
 import java.io.File
 import java.math.RoundingMode
@@ -38,10 +36,10 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
 
             suffix = " KB used"
             size /= 1024
-           // tvInternalStorageUsage.text = size.toString() + suffix
+            // tvInternalStorageUsage.text = size.toString() + suffix
 
         }
-       val availableSpace = stat.availableBlocks.toLong() * stat.blockSize.toLong()
+        val availableSpace = stat.availableBlocks.toLong() * stat.blockSize.toLong()
         if (size >= 1024 * 1024) {
 
             suffix = " GB used"
@@ -49,7 +47,7 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
             df.roundingMode = RoundingMode.CEILING
             size /= 1024 * 1024
 
-           // tvInternalStorageUsage.text = df.format(size).toString() + suffix
+            // tvInternalStorageUsage.text = df.format(size).toString() + suffix
         }
         val statFs = Environment.getStorageDirectory().totalSpace
         val memory = " GB • Internal"
@@ -62,7 +60,7 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
         val statOS = StatFs(pathOS.absolutePath).totalBytes
 
         val free_OS_memory: Long = 0
-      // var total_OS_memory = statOS.blockCountLong * statOS.blockSizeLong /(1024*1024*1024)
+        // var total_OS_memory = statOS.blockCountLong * statOS.blockSizeLong /(1024*1024*1024)
 
         tvInternalStorageDetails.text = statOS.toString()+ memory
     }
