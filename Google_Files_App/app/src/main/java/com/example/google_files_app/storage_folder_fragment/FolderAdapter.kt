@@ -1,6 +1,7 @@
 package com.example.google_files_app.storage_folder_fragment
 
 
+import android.R.attr
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
@@ -17,6 +18,16 @@ import com.example.google_files_app.R
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import android.R.attr.label
+
+import android.content.pm.ApplicationInfo
+
+import android.content.pm.PackageInfo
+import android.graphics.drawable.Drawable
+
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.annotation.RequiresApi
 
 
 class FolderAdapter(
@@ -35,6 +46,7 @@ class FolderAdapter(
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         holder.mName.text = file[position].name
         holder.mName.isSelected = true
@@ -73,8 +85,9 @@ class FolderAdapter(
             holder.ivPreviewImage.setImageBitmap(myBitmap)
             holder.ivPreviewImage.visibility = View.VISIBLE
 
-        }
-        if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4")) {
+        }else if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4")
+            ||file[position].name.lowercase(Locale.getDefault()).endsWith("gif")
+            ||file[position].name.lowercase(Locale.getDefault()).endsWith("flv")) {
             val bMap = ThumbnailUtils.createVideoThumbnail(
                 file[position].absolutePath,
                 MediaStore.Video.Thumbnails.MICRO_KIND
@@ -82,6 +95,19 @@ class FolderAdapter(
             holder.ivPreviewImage.setImageBitmap(bMap)
             holder.ivPreviewImage.visibility = View.VISIBLE
 
+        }else if(file[position].name.lowercase(Locale.getDefault()).endsWith("mp3")
+            ||file[position].name.lowercase(Locale.getDefault()).endsWith("m4a")){
+            holder.ivFileView.setImageResource(R.drawable.music_note)
+
+        }
+       else if (file[position].name.lowercase(Locale.getDefault()).endsWith("pdf")) {
+            holder.ivFileView.setImageResource(R.drawable.pdf_icon)
+        }else if (file[position].name.lowercase(Locale.getDefault()).endsWith("apk")){
+
+            holder.ivFileView.setImageResource(R.drawable.android_icon)
+
+        }else if(!file[position].isDirectory){
+            holder.ivFileView.setImageResource(R.drawable.file_icon)
         }
         if(!file[position].isDirectory) {
             holder.mContainer.setOnClickListener(View.OnClickListener {

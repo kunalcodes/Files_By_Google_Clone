@@ -38,6 +38,7 @@
                     android:paddingHorizontal="20dp">
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcPicture"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         app:cardCornerRadius="10dp"
@@ -47,14 +48,14 @@
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="100dp"
-                            android:background="@drawable/ic_launcher_background" />
+                            android:background="@drawable/willow_image" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="105dp"
-                            android:text="Screenshots"
+                            android:text="Pictures"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 
@@ -70,6 +71,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/mcDownloads"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginStart="20dp"
@@ -80,14 +82,14 @@
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="100dp"
-                            android:background="@drawable/ic_launcher_background" />
+                            android:background="@drawable/cardigan" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="105dp"
-                            android:text="Whatsapp Animation"
+                            android:text="Downloads"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 
@@ -103,7 +105,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-
+                        android:id="@+id/mcCameraImage"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_marginStart="20dp"
@@ -114,14 +116,14 @@
                         <ImageView
                             android:layout_width="150dp"
                             android:layout_height="100dp"
-                            android:background="@drawable/ic_launcher_background" />
+                            android:background="@drawable/willow" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_marginTop="105dp"
-                            android:text="Whatsapp Video"
+                            android:text="Camera"
                             android:textColor="@color/black"
                             android:textSize="12sp" />
 
@@ -136,71 +138,7 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:strokeColor="@color/google_grey"
-                        app:strokeWidth="0.5dp">
 
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic_launcher_background" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="105dp"
-                            android:text="Uploads"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="122dp"
-                            android:text="Images"
-                            android:textColor="@color/google_grey"
-                            android:textSize="10sp" />
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_marginStart="20dp"
-                        app:cardCornerRadius="10dp"
-                        app:strokeColor="@color/google_grey"
-                        app:strokeWidth="0.5dp">
-
-                        <ImageView
-                            android:layout_width="150dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/ic_launcher_background" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="105dp"
-                            android:text="Whatsapp Images"
-                            android:textColor="@color/black"
-                            android:textSize="12sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:layout_marginTop="122dp"
-                            android:text="Images"
-                            android:textColor="@color/google_grey"
-                            android:textSize="10sp" />
-
-                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
 

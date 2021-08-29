@@ -13,6 +13,7 @@ open class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) 
     var mDate: TextView = itemView.findViewById(R.id.tvSize)
     var ivPreviewImage: ImageView = itemView.findViewById(R.id.ivIcon)
     var mContainer: CardView = itemView.findViewById(R.id.mContainer)
+    var ivFileView : ImageView = itemView.findViewById(R.id.ivFolderImage)
 
 
 }

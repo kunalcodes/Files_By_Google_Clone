@@ -10,9 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.google_files_app.R
 import com.example.google_files_app.storage_folder_fragment.FragmentFolder
-import kotlinx.android.synthetic.main.fragment_browse.*
 import kotlinx.android.synthetic.main.fragment_clean.*
-import java.io.File
 import kotlin.math.abs
 
 
@@ -23,7 +21,7 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tvInternalStorageUsage.text = freeMemory().toString() + " GB used"
+        tvInternalStorageUsage.text = busyMemory().toString() + " GB used"
         tvInternalStorageDetails.text = totalMemory().toString() + " GB total • Internal"
         cleanInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
@@ -44,20 +42,21 @@ class CleanFragment : Fragment(R.layout.fragment_clean) {
     fun totalMemory(): Long {
 
         val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        return abs(statFs.blockCount * statFs.blockSize/(1024*1024*100)).toLong()
+        return abs(statFs.blockCount * statFs.blockSize / (1024 * 1024 * 100)).toLong()
     }
 
     fun freeMemory(): Long {
         val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+        return (statFs.availableBlocksLong * statFs.blockSize) / (1024 * 1024 * 100).toLong()
     }
+
     fun busyMemory(): Long {
         var statFs = StatFs(Environment.getExternalStorageDirectory().absolutePath)
 
         // val statFs = StatFs(Environment.getRootDirectory().absolutePath)
         val total = (statFs.blockCount * statFs.blockSize).toLong()
         val free = (statFs.availableBlocks * statFs.blockSize).toLong()
-        return abs((total - free) / (1024*1024*100))
+        return abs((total - free) / (1024 * 1024 * 100))
     }
 
 }

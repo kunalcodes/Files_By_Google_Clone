@@ -56,12 +56,24 @@ class FragmentCategories : Fragment(), OnSelect {
         val bundle: Bundle? = this.arguments
 
         if (bundle != null) {
-            path = if (bundle.getString("type").equals("downloads")) {
+           path = if (bundle.getString("type").equals("downloads")) {
                 Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            }
 
-            } else {
+            else {
                 Environment.getExternalStorageDirectory()
             }
+
+             if (bundle.getString("type").equals("pictures")) {
+                path =  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            }
+            if (bundle.getString("type").equals("downloadsImage")) {
+                path =  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+            }
+            if (bundle.getString("type").equals("cameraImage")) {
+                path =  Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM)
+            }
+
 
         }
     }
@@ -103,6 +115,34 @@ class FragmentCategories : Fragment(), OnSelect {
                                 arrayList.add(singleFile)
 
                             }
+                        "pictures" ->
+                            if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".bmp")
+                            ) {
+                                arrayList.add(singleFile)
+
+                            }
+                        "downloadsImage" ->
+                            if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".bmp")
+                            ) {
+                                arrayList.add(singleFile)
+
+                            }
+                        "cameraImage" ->
+                            if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
+                                || singleFile.name.lowercase(Locale.getDefault()).endsWith(".bmp")
+                            ) {
+                                arrayList.add(singleFile)
+
+                            }
+
                         "video" ->
                             if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp4")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mkv")
@@ -136,7 +176,7 @@ class FragmentCategories : Fragment(), OnSelect {
                                 arrayList.add(singleFile)
                             }
                         "downloads" ->
-                            if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
+                           /* if (singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpeg")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".jpg")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".png")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp4")
@@ -147,10 +187,10 @@ class FragmentCategories : Fragment(), OnSelect {
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".xml")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".mp3")
                                 || singleFile.name.lowercase(Locale.getDefault()).endsWith(".m4a")
-                            ) {
+                            ) {*/
                                 arrayList.add(singleFile)
 
-                            }
+                           // }
                     }
                 }
             }

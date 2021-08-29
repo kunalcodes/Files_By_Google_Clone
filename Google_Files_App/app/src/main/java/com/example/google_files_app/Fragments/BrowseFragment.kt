@@ -1,6 +1,8 @@
 package com.example.google_files_app.Fragments
 
 import android.Manifest
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -27,6 +29,10 @@ import kotlinx.android.synthetic.main.fragment_browse.*
 import storage_folder_fragment.FileSize
 import storage_folder_fragment.FragmentCategories
 import java.io.File
+import androidx.core.content.FileProvider
+
+
+
 
 
 class BrowseFragment : Fragment(), OnSelect {
@@ -41,7 +47,7 @@ class BrowseFragment : Fragment(), OnSelect {
         onClickOfCategories()
         runTimePermission()
 
-        tvInternalStorageSize.text = freeMemory().toString() +" GB free"
+        tvInternalStorageSize.text = freeMemory().toString() + " GB free"
 
         layoutStorageInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
@@ -50,9 +56,12 @@ class BrowseFragment : Fragment(), OnSelect {
 
 
     }
+
+
+
     fun freeMemory(): Long {
         val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+        return (statFs.availableBlocksLong * statFs.blockSize) / (1024 * 1024 * 100).toLong()
     }
 
     override fun onCreateView(
@@ -130,6 +139,31 @@ class BrowseFragment : Fragment(), OnSelect {
                 .addToBackStack(null).commit()
 
         }
+        mcDownloads.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("type", "downloadsImage")
+            val fragmentCategories = FragmentCategories()
+            fragmentCategories.arguments = bundle
+            requireFragmentManager().beginTransaction().replace(R.id.container, fragmentCategories)
+                .addToBackStack(null).commit()
+        }
+        mcPicture.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("type", "pictures")
+            val fragmentCategories = FragmentCategories()
+            fragmentCategories.arguments = bundle
+            requireFragmentManager().beginTransaction().replace(R.id.container, fragmentCategories)
+                .addToBackStack(null).commit()
+
+        }
+        mcCameraImage.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putString("type", "cameraImage")
+            val fragmentCategories = FragmentCategories()
+            fragmentCategories.arguments = bundle
+            requireFragmentManager().beginTransaction().replace(R.id.container, fragmentCategories)
+                .addToBackStack(null).commit()
+        }
 
     }
 
@@ -206,7 +240,6 @@ class BrowseFragment : Fragment(), OnSelect {
         }
 
         if (file != null) {
-            Log.d("Tag", FileSize.getVideoSize(file).toString())
             tvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
             tvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
             tvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
@@ -219,16 +252,16 @@ class BrowseFragment : Fragment(), OnSelect {
         return arrayList
     }
 
-    private fun sizeFormat(long: Long) : String{
+    private fun sizeFormat(long: Long): String {
 
-        if(long < 1000){
-           return  "$long B"
-        }else if(long > 1000 && long < 1000*1000){
-           return (long/1024).toString() + " KB"
-        }else if(long > 1000*1000 && long < 1000*1024*1024){
-            return (long /(1000*1000)).toString() + " MB"
+        if (long < 1000) {
+            return "$long B"
+        } else if (long > 1000 && long < 1000 * 1000) {
+            return (long / 1024).toString() + " KB"
+        } else if (long > 1000 * 1000 && long < 1000 * 1024 * 1024) {
+            return (long / (1000 * 1000)).toString() + " MB"
         }
-            return (long /(1000*1024*1024)).toString() + " GB"
+        return (long / (1000 * 1024 * 1024)).toString() + " GB"
 
     }
 

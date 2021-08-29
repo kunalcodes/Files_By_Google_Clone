@@ -2,12 +2,15 @@ package com.example.google_files_app
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.core.content.FileProvider
 import java.io.File
 
 class FileOpener {
     //    @Throws(IOException::class)
     companion object {
+        @RequiresApi(Build.VERSION_CODES.N)
         fun openFile(context: Context, file: File) {
             val selectedFile = file
             val uri = FileProvider.getUriForFile(context,

@@ -91,19 +91,22 @@
             <ImageView
                 android:layout_width="125dp"
                 android:layout_gravity="top|start"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/taylor_swift_willow"
                 android:layout_height="125dp"/>
 
             <ImageView
                 android:layout_width="125dp"
                 android:layout_gravity="top|center"
-                android:src="@drawable/ic_launcher_background"
+                android:scaleType="centerCrop"
+                android:src="@drawable/willow_image"
                 android:layout_height="125dp"/>
 
             <ImageView
                 android:layout_width="125dp"
                 android:layout_gravity="top|end"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/willow"
+                android:scaleType="centerCrop"
+
                 android:layout_height="125dp"/>
             <TextView
                 android:text="6.20 GB, 55 files"
@@ -115,7 +118,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Delete large files"
+                android:text="Delete camera files"
                 android:textSize="24sp"
                 android:layout_marginTop="150dp"
                 android:textColor="@color/black"
@@ -157,48 +160,58 @@
                 <ImageView
                     android:id="@+id/ivAppView1"
                     android:layout_width="55dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="55dp"/>
+                    android:layout_height="55dp"
+                    android:scaleType="centerCrop"
+
+                    android:src="@drawable/blinding_lights" />
 
                 <ImageView
                     android:id="@+id/ivAppView2"
                     android:layout_width="55dp"
-                    android:layout_toEndOf="@+id/ivAppView1"
+                    android:layout_height="55dp"
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="55dp"/>
+                    android:layout_toEndOf="@+id/ivAppView1"
+                    android:src="@drawable/bluetooth_headsets" />
 
                 <ImageView
                     android:id="@+id/ivAppView3"
                     android:layout_width="55dp"
-                    android:layout_toEndOf="@+id/ivAppView2"
+                    android:layout_height="55dp"
+                    android:scaleType="centerCrop"
+
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="55dp"/>
+                    android:layout_toEndOf="@+id/ivAppView2"
+                    android:src="@drawable/cardigan" />
 
                 <ImageView
                     android:id="@+id/ivAppView4"
                     android:layout_width="55dp"
-                    android:layout_toEndOf="@+id/ivAppView3"
+                    android:layout_height="55dp"
+                    android:scaleType="centerCrop"
+
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="55dp"/>
+                    android:layout_toEndOf="@+id/ivAppView3"
+                    android:src="@drawable/cases_cover" />
 
                 <ImageView
                     android:id="@+id/ivAppView5"
                     android:layout_width="55dp"
-                    android:layout_toEndOf="@+id/ivAppView4"
+                    android:layout_height="55dp"
+                    android:scaleType="centerCrop"
+
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="55dp"/>
+                    android:layout_toEndOf="@+id/ivAppView4"
+                    android:src="@drawable/certified_used_audio" />
 
                 <ImageView
                     android:id="@+id/ivAppView6"
                     android:layout_width="55dp"
-                    android:layout_toEndOf="@+id/ivAppView5"
+                    android:layout_height="55dp"
+                    android:scaleType="centerCrop"
+
                     android:layout_marginStart="5dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="55dp"/>
+                    android:layout_toEndOf="@+id/ivAppView5"
+                    android:src="@drawable/belts_and_wallets" />
 
             </RelativeLayout>
 
@@ -212,7 +225,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Delete large files"
+                android:text="Delete downloaded files"
                 android:textSize="24sp"
                 android:layout_marginTop="80dp"
                 android:textColor="@color/black"
@@ -254,32 +267,40 @@
                 <ImageView
                     android:id="@+id/ivDownloadFileView1"
                     android:layout_width="90dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="90dp"/>
+                    android:layout_height="90dp"
+                    android:scaleType="centerCrop"
+
+                    android:src="@drawable/willow" />
 
                 <ImageView
                     android:id="@+id/ivDownloadFileView2"
                     android:layout_width="90dp"
+                    android:scaleType="centerCrop"
+
                     android:layout_toEndOf="@+id/ivDownloadFileView1"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/ic_launcher_background"
+                    android:src="@drawable/watches_and_more"
                     android:layout_height="90dp"/>
 
                 <ImageView
                     android:id="@+id/ivDownloadFileView3"
                     android:layout_width="90dp"
-                    android:layout_toEndOf="@+id/ivDownloadFileView2"
+                    android:layout_height="90dp"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="90dp"/>
+                    android:scaleType="centerCrop"
+
+                    android:layout_toEndOf="@+id/ivDownloadFileView2"
+                    android:src="@drawable/taylor_swift_willow" />
 
                 <ImageView
                     android:id="@+id/ivDownloadFileView4"
                     android:layout_width="90dp"
-                    android:layout_toEndOf="@+id/ivDownloadFileView3"
+                    android:layout_height="90dp"
                     android:layout_marginStart="10dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:layout_height="90dp"/>
+                    android:scaleType="centerCrop"
+
+                    android:layout_toEndOf="@+id/ivDownloadFileView3"
+                    android:src="@drawable/willow_image" />
 
 
             </RelativeLayout>
@@ -294,7 +315,7 @@
                 android:layout_height="wrap_content"/>
             <TextView
                 android:layout_width="wrap_content"
-                android:text="Delete large files"
+                android:text="Delete picture files"
                 android:textSize="24sp"
                 android:layout_marginTop="115dp"
                 android:textColor="@color/black"
@@ -323,6 +344,8 @@
             android:layout_width="match_parent"
             android:layout_height="140dp"
             android:layout_marginTop="30dp"
+            android:scaleType="centerCrop"
+
             android:background="@drawable/cleaning_suggestions_bottom" />
         <View
             android:layout_width="match_parent"
