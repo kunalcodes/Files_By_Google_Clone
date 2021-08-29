@@ -1,8 +1,6 @@
 package com.example.google_files_app.Fragments
 
 import android.Manifest
-import android.content.Intent
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -29,10 +27,6 @@ import kotlinx.android.synthetic.main.fragment_browse.*
 import storage_folder_fragment.FileSize
 import storage_folder_fragment.FragmentCategories
 import java.io.File
-import androidx.core.content.FileProvider
-
-
-
 
 
 class BrowseFragment : Fragment(), OnSelect {
@@ -47,7 +41,7 @@ class BrowseFragment : Fragment(), OnSelect {
         onClickOfCategories()
         runTimePermission()
 
-        tvInternalStorageSize.text = freeMemory().toString() + " GB free"
+        tvInternalStorageSize.text = freeMemory().toString() +" GB free"
 
         layoutStorageInternal.setOnClickListener {
             fragmentManager2 = requireActivity().supportFragmentManager
@@ -56,12 +50,9 @@ class BrowseFragment : Fragment(), OnSelect {
 
 
     }
-
-
-
     fun freeMemory(): Long {
         val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        return (statFs.availableBlocksLong * statFs.blockSize) / (1024 * 1024 * 100).toLong()
+        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
     }
 
     override fun onCreateView(
@@ -240,6 +231,7 @@ class BrowseFragment : Fragment(), OnSelect {
         }
 
         if (file != null) {
+            Log.d("Tag", FileSize.getVideoSize(file).toString())
             tvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
             tvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
             tvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))

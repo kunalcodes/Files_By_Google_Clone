@@ -1,5 +1,6 @@
 package com.example.google_files_app
 
+import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,42 +10,75 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.Fragments.CleanFragment
 import com.example.google_files_app.Fragments.ShareFragment
+import com.example.google_files_app.search_operation.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, SideActivityOperation {
 
     private lateinit var selectedFragment: Fragment
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ivMenu.setOnClickListener(View.OnClickListener {
-            drawer_layout.openDrawer(GravityCompat.START)
-        })
+
+        onClickOperations()
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener)
         bottomNavigationView.selectedItemId = R.id.nav_browse
-        supportFragmentManager.beginTransaction().replace(R.id.container, BrowseFragment(), "MY_FRAGMENT")
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.container, BrowseFragment(), "MY_FRAGMENT")
             .commit()
 
         val drawerNavigationView = findViewById<NavigationView>(R.id.nav_view)
         drawerNavigationView.setNavigationItemSelectedListener(this)
         drawerNavigationView.bringToFront()
-        val toggle = ActionBarDrawerToggle(this, drawer_layout, R.string.Open_Drawer, R.string.Close_Drawer)
+        val toggle =
+            ActionBarDrawerToggle(this, drawer_layout, R.string.Open_Drawer, R.string.Close_Drawer)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+        changeToolbarsForSideActivities()
+    }
+
+    private fun onClickOperations() {
+        ivMenu.setOnClickListener(View.OnClickListener {
+            drawer_layout.openDrawer(GravityCompat.START)
+        })
+        ivBack.setOnClickListener(View.OnClickListener {
+            onBackPressed()
+        })
+        ivSearch.setOnClickListener(View.OnClickListener {
+            val searchIntent = Intent(applicationContext, SearchActivity::class.java)
+            startActivity(searchIntent)
+        })
+    }
+
+    private fun changeToolbarsForSideActivities() {
+        supportFragmentManager.addOnBackStackChangedListener {
+            if (supportFragmentManager.backStackEntryCount == 0) {
+                layoutTopBarLandingPage.visibility = View.VISIBLE
+                bottomNavigationWithShadow.visibility = View.VISIBLE
+                layoutTopBarSideActivity.visibility = View.GONE
+
+            } else if (supportFragmentManager.backStackEntryCount == 1) {
+                layoutTopBarLandingPage.visibility = View.GONE
+                bottomNavigationWithShadow.visibility = View.GONE
+                layoutTopBarSideActivity.visibility = View.VISIBLE
+            }
+        }
     }
 
 
     private val navListener =
         BottomNavigationView.OnNavigationItemSelectedListener { item ->
-            when(item.itemId){
+            when (item.itemId) {
                 R.id.nav_browse -> ivSearch.visibility = View.VISIBLE
                 else -> ivSearch.visibility = View.GONE
             }
@@ -54,7 +88,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 R.id.nav_share -> ShareFragment()
                 else -> CleanFragment()
             }
-            supportFragmentManager.beginTransaction().replace(R.id.container, selectedFragment, "MY_FRAGMENT")
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.container, selectedFragment, "MY_FRAGMENT")
                 .commit()
             true
         }
@@ -76,6 +111,23 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        layoutTopBarLandingPage.visibility = View.VISIBLE
+        bottomNavigationWithShadow.visibility = View.VISIBLE
+        layoutTopBarSideActivity.visibility = View.GONE
+    }
 
+    override fun onSideActivitySelected(sideActivityName: String) {
+        when (sideActivityName){
+            "Images" -> tvSideActivityTitle.text = "Images"
+            "Videos" -> tvSideActivityTitle.text = "Videos"
+            "Audio" -> tvSideActivityTitle.text = "Audio"
+            "Documents" -> tvSideActivityTitle.text = "Documents"
+            "Apps" -> tvSideActivityTitle.text = "Apps"
+            "Downloads" -> tvSideActivityTitle.text = "Downloads"
+            "Internal Storage" -> tvSideActivityTitle.text = "Internal Storage"
+        }
+    }
 
 }
