@@ -18,7 +18,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, SideActivityOperation {
 
     private lateinit var selectedFragment: Fragment
 
@@ -105,6 +105,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         layoutTopBarLandingPage.visibility = View.VISIBLE
         bottomNavigationWithShadow.visibility = View.VISIBLE
         layoutTopBarSideActivity.visibility = View.GONE
+    }
+
+    override fun onSideActivitySelected(sideActivityName: String) {
+        when (sideActivityName){
+            "Images" -> tvSideActivityTitle.text = "Images"
+            "Videos" -> tvSideActivityTitle.text = "Videos"
+            "Audio" -> tvSideActivityTitle.text = "Audio"
+            "Documents" -> tvSideActivityTitle.text = "Documents"
+            "Apps" -> tvSideActivityTitle.text = "Apps"
+            "Downloads" -> tvSideActivityTitle.text = "Downloads"
+            "Internal Storage" -> tvSideActivityTitle.text = "Internal Storage"
+        }
     }
 
 }
