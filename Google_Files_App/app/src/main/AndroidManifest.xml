@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.google_files_app">
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE">
 
-    </uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
-    </uses-permission>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_google_files"
@@ -14,7 +12,9 @@
         android:roundIcon="@drawable/ic_google_files"
         android:supportsRtl="true"
         android:theme="@style/Theme.Google_Files_App">
-
+        <activity
+            android:name=".search_operation.SearchActivity"
+            android:exported="true" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">
@@ -35,15 +35,13 @@
         </activity>
 
         <provider
-            android:authorities="${applicationId}.provider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_path">
-
-            </meta-data>
+                android:resource="@xml/provider_path"></meta-data>
         </provider>
     </application>
 

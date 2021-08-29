@@ -1,5 +1,6 @@
 package com.example.google_files_app
 
+import android.content.Intent
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentManager
 import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.Fragments.CleanFragment
 import com.example.google_files_app.Fragments.ShareFragment
+import com.example.google_files_app.search_operation.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,12 +28,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        ivMenu.setOnClickListener(View.OnClickListener {
-            drawer_layout.openDrawer(GravityCompat.START)
-        })
-        ivBack.setOnClickListener(View.OnClickListener {
-            onBackPressed()
-        })
+
+        onClickOperations()
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener)
         bottomNavigationView.selectedItemId = R.id.nav_browse
@@ -47,6 +45,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         changeToolbarsForSideActivities()
+    }
+
+    private fun onClickOperations() {
+        ivMenu.setOnClickListener(View.OnClickListener {
+            drawer_layout.openDrawer(GravityCompat.START)
+        })
+        ivBack.setOnClickListener(View.OnClickListener {
+            onBackPressed()
+        })
+        ivSearch.setOnClickListener(View.OnClickListener {
+            val searchIntent = Intent(applicationContext, SearchActivity::class.java)
+            startActivity(searchIntent)
+        })
     }
 
     private fun changeToolbarsForSideActivities() {
