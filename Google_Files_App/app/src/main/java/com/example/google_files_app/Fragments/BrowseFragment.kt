@@ -70,7 +70,7 @@ class BrowseFragment : Fragment(), OnSelect {
     private fun launchFirstFragment() {
         val fragmentTransaction = fragmentManager2.beginTransaction()
         val fragmentFolder = FragmentFolder()
-        fragmentTransaction.add(R.id.container, fragmentFolder, "tag")
+        fragmentTransaction.replace(R.id.container, fragmentFolder, "tag")
             .addToBackStack("LaunchFolderFragment").commit()
 
     }
