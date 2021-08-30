@@ -27,6 +27,7 @@ import android.graphics.drawable.Drawable
 
 import android.content.pm.PackageManager
 import android.os.Build
+import android.text.TextUtils
 import androidx.annotation.RequiresApi
 
 
@@ -49,6 +50,8 @@ class FolderAdapter(
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         holder.mName.text = file[position].name
+        holder.mName.ellipsize = TextUtils.TruncateAt.MARQUEE;
+        holder.mName.isSingleLine = true
         holder.mName.isSelected = true
         var item = 0
 
@@ -62,7 +65,7 @@ class FolderAdapter(
                 }
             }
 
-            holder.mDate.text =    SimpleDateFormat("dd MMM yyyy").format(Date(file[position].lastModified()))
+            holder.mDate.text =  SimpleDateFormat("dd MMM yyyy").format(Date(file[position].lastModified()))
 
 
         } else {
