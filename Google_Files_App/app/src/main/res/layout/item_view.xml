@@ -11,7 +11,6 @@
         android:layout_height="wrap_content"
         android:padding="5dp">
 
-
         <ImageView
             android:id="@+id/ivFolderImage"
             android:layout_width="wrap_content"
@@ -80,6 +79,7 @@
             android:background="@color/google_grey" />
 
     </RelativeLayout>
+
 
 
 </androidx.cardview.widget.CardView>

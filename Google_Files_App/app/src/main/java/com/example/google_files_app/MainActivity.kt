@@ -48,6 +48,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun onClickOperations() {
+
+        ivViewStyle.setOnClickListener {
+            it.setBackgroundResource(R.drawable.ic_view_list)
+        }
+
+
         ivMenu.setOnClickListener(View.OnClickListener {
             drawer_layout.openDrawer(GravityCompat.START)
         })

@@ -1,6 +1,8 @@
 package com.example.google_files_app.Fragments
 
 import android.Manifest
+import android.app.Activity
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
@@ -15,6 +17,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.google_files_app.R
+import com.example.google_files_app.SideActivityOperation
 import com.example.google_files_app.storage_folder_fragment.FolderAdapter
 import com.example.google_files_app.storage_folder_fragment.FragmentFolder
 import com.example.google_files_app.storage_folder_fragment.OnSelect
@@ -34,7 +37,13 @@ class BrowseFragment : Fragment(), OnSelect {
     var storage: File? = null
 
     private var fileList = ArrayList<File>()
+    private lateinit var selectedSideActivityOperation: SideActivityOperation
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        val activity = context as Activity
+        selectedSideActivityOperation = activity as SideActivityOperation
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,6 +53,7 @@ class BrowseFragment : Fragment(), OnSelect {
         tvInternalStorageSize.text = freeMemory().toString() +" GB free"
 
         layoutStorageInternal.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Internal Storage")
             fragmentManager2 = requireActivity().supportFragmentManager
             launchFirstFragment()
         }
@@ -78,6 +88,8 @@ class BrowseFragment : Fragment(), OnSelect {
 
     private fun onClickOfCategories() {
         layoutCategoryImages.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Images")
+
             val bundle = Bundle()
             bundle.putString("type", "image")
             val fragmentCategories = FragmentCategories()
@@ -86,6 +98,8 @@ class BrowseFragment : Fragment(), OnSelect {
                 .addToBackStack(null).commit()
         }
         layoutCategoryVideos.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Videos")
+
             val bundle = Bundle()
             bundle.putString("type", "video")
             val fragmentCategories = FragmentCategories()
@@ -95,6 +109,8 @@ class BrowseFragment : Fragment(), OnSelect {
 
         }
         layoutCategoryAudio.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Audio")
+
             val bundle = Bundle()
             bundle.putString("type", "audio")
             val fragmentCategories = FragmentCategories()
@@ -104,7 +120,7 @@ class BrowseFragment : Fragment(), OnSelect {
 
         }
         layoutCategoryDocuments.setOnClickListener {
-
+            selectedSideActivityOperation.onSideActivitySelected("Documents")
             val bundle = Bundle()
             bundle.putString("type", "docs")
             val fragmentCategories = FragmentCategories()
@@ -113,6 +129,8 @@ class BrowseFragment : Fragment(), OnSelect {
                 .addToBackStack(null).commit()
         }
         layoutCategoryApps.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Apps")
+
             val bundle = Bundle()
             bundle.putString("type", "apps")
             val fragmentCategories = FragmentCategories()
@@ -122,6 +140,8 @@ class BrowseFragment : Fragment(), OnSelect {
 
         }
         layoutCategoryDownloads.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Downloads")
+
             val bundle = Bundle()
             bundle.putString("type", "downloads")
             val fragmentCategories = FragmentCategories()
@@ -131,6 +151,8 @@ class BrowseFragment : Fragment(), OnSelect {
 
         }
         mcDownloads.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Images")
+
             val bundle = Bundle()
             bundle.putString("type", "downloadsImage")
             val fragmentCategories = FragmentCategories()
@@ -139,6 +161,8 @@ class BrowseFragment : Fragment(), OnSelect {
                 .addToBackStack(null).commit()
         }
         mcPicture.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Images")
+
             val bundle = Bundle()
             bundle.putString("type", "pictures")
             val fragmentCategories = FragmentCategories()
@@ -148,6 +172,7 @@ class BrowseFragment : Fragment(), OnSelect {
 
         }
         mcCameraImage.setOnClickListener {
+            selectedSideActivityOperation.onSideActivitySelected("Images")
             val bundle = Bundle()
             bundle.putString("type", "cameraImage")
             val fragmentCategories = FragmentCategories()

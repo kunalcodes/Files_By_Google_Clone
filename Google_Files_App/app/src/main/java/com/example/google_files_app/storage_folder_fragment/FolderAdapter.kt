@@ -1,7 +1,6 @@
 package com.example.google_files_app.storage_folder_fragment
 
 
-import android.R.attr
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.media.ThumbnailUtils
@@ -11,21 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.example.google_files_app.FileOpener
 import com.example.google_files_app.R
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-import android.R.attr.label
-
-import android.content.pm.ApplicationInfo
-
-import android.content.pm.PackageInfo
-import android.graphics.drawable.Drawable
-
-import android.content.pm.PackageManager
 import android.os.Build
 import android.text.TextUtils
 import androidx.annotation.RequiresApi
@@ -47,10 +37,11 @@ class FolderAdapter(
         )
     }
 
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         holder.mName.text = file[position].name
-        holder.mName.ellipsize = TextUtils.TruncateAt.MARQUEE;
+        holder.mName.ellipsize = TextUtils.TruncateAt.END
         holder.mName.isSingleLine = true
         holder.mName.isSelected = true
         var item = 0
