@@ -1,16 +1,14 @@
 package com.example.google_files_app
 
 import android.content.Intent
-import android.opengl.Visibility
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.example.google_files_app.Fragments.BrowseFragment
 import com.example.google_files_app.Fragments.CleanFragment
 import com.example.google_files_app.Fragments.ShareFragment
@@ -20,10 +18,11 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, SideActivityOperation {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    SideActivityOperation {
 
     private lateinit var selectedFragment: Fragment
-
+    private var boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,12 +46,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         changeToolbarsForSideActivities()
     }
 
+
     private fun onClickOperations() {
 
         ivViewStyle.setOnClickListener {
-            it.setBackgroundResource(R.drawable.ic_view_list)
+            boolean = if (boolean) {
+                it.setBackgroundResource(R.drawable.ic_view_grid)
+                false
+            } else {
+                it.setBackgroundResource(R.drawable.ic_view_list)
+                true
+            }
         }
-
 
         ivMenu.setOnClickListener(View.OnClickListener {
             drawer_layout.openDrawer(GravityCompat.START)
@@ -125,7 +130,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onSideActivitySelected(sideActivityName: String) {
-        when (sideActivityName){
+        when (sideActivityName) {
             "Images" -> tvSideActivityTitle.text = "Images"
             "Videos" -> tvSideActivityTitle.text = "Videos"
             "Audio" -> tvSideActivityTitle.text = "Audio"

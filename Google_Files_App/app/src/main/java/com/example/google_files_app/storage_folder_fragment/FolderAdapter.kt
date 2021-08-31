@@ -74,10 +74,10 @@ class FolderAdapter(
             || file[position].name.lowercase(Locale.getDefault()).endsWith("jpg")
             || file[position].name.lowercase(Locale.getDefault()).endsWith("png")
         ) {
-
             val myBitmap = BitmapFactory.decodeFile(file[position].absolutePath)
-            holder.ivPreviewImage.setImageBitmap(myBitmap)
-            holder.ivPreviewImage.visibility = View.VISIBLE
+            holder.ivFileView.setImageBitmap(myBitmap)
+           // holder.ivPreviewImage.visibility = View.VISIBLE
+
 
         }else if (file[position].name.lowercase(Locale.getDefault()).endsWith("mp4")
             ||file[position].name.lowercase(Locale.getDefault()).endsWith("gif")
@@ -86,8 +86,8 @@ class FolderAdapter(
                 file[position].absolutePath,
                 MediaStore.Video.Thumbnails.MICRO_KIND
             )
-            holder.ivPreviewImage.setImageBitmap(bMap)
-            holder.ivPreviewImage.visibility = View.VISIBLE
+            holder.ivFileView.setImageBitmap(bMap)
+           // holder.ivPreviewImage.visibility = View.VISIBLE
 
         }else if(file[position].name.lowercase(Locale.getDefault()).endsWith("mp3")
             ||file[position].name.lowercase(Locale.getDefault()).endsWith("m4a")){
