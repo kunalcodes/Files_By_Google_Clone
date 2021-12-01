@@ -8,7 +8,7 @@ android {
     compileSdk 30
 
     defaultConfig {
-        applicationId "com.example.google_files_app"
+        applicationId "my.kunal.file_explorer"
         minSdk 21
         targetSdk 30
         versionCode 1

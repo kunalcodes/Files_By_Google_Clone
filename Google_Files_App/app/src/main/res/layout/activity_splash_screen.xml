@@ -4,23 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SplashScreenActivity">
+    tools:context="my.kunal.file_explorer.SplashScreenActivity">
 
     <ImageView
         android:id="@+id/ivIcon"
         android:layout_width="125dp"
         android:layout_height="100dp"
-        android:layout_marginStart="150dp"
         android:layout_centerInParent="true"
-        android:background="@drawable/ic_google_files" />
+        android:layout_marginStart="150dp"
+        android:background="@drawable/ic_google_files_2" />
 
-    <ImageView
+    <TextView
         android:id="@+id/ivGoogle"
         android:layout_width="150dp"
         android:layout_height="50dp"
+        android:text="Explorer"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/product_sans_regular"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/ic_google_text" />
+        android:layout_marginBottom="80dp" />
 
 </RelativeLayout>

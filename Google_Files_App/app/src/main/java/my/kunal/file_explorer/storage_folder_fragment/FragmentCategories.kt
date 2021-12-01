@@ -1,24 +1,20 @@
-package storage_folder_fragment
+package my.kunal.file_explorer.storage_folder_fragment
 
 import android.Manifest
 import android.os.Bundle
 import android.os.Environment
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.R
-import com.example.google_files_app.storage_folder_fragment.FolderAdapter
-import com.example.google_files_app.storage_folder_fragment.FragmentFolder
-import com.example.google_files_app.storage_folder_fragment.OnSelect
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import my.kunal.file_explorer.R
 import java.io.File
 import java.util.*
 import kotlin.collections.ArrayList

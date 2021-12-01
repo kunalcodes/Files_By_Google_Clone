@@ -1,4 +1,4 @@
-package com.example.google_files_app
+package my.kunal.file_explorer
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,10 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.example.google_files_app.Fragments.BrowseFragment
-import com.example.google_files_app.Fragments.CleanFragment
-import com.example.google_files_app.Fragments.ShareFragment
-import com.example.google_files_app.search_operation.SearchActivity
+import my.kunal.file_explorer.Fragments.BrowseFragment
+import my.kunal.file_explorer.Fragments.CleanFragment
+import my.kunal.file_explorer.Fragments.ShareFragment
+import my.kunal.file_explorer.search_operation.SearchActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*

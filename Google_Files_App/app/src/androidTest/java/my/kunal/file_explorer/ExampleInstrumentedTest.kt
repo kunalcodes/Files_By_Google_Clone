@@ -1,4 +1,4 @@
-package com.example.google_files_app
+package my.kunal.file_explorer
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

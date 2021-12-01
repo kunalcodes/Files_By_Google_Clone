@@ -1,11 +1,9 @@
-package com.example.google_files_app
+package my.kunal.file_explorer
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.WindowManager
-import kotlin.concurrent.thread
 
 class SplashScreenActivity : AppCompatActivity() {
 

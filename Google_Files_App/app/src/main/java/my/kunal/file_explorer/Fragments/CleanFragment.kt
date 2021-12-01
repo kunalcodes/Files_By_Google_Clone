@@ -1,4 +1,4 @@
-package com.example.google_files_app.Fragments
+package my.kunal.file_explorer.Fragments
 
 import android.app.Activity
 import android.content.Context
@@ -6,20 +6,17 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.os.StatFs
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import com.example.google_files_app.R
-import com.example.google_files_app.SideActivityOperation
-import com.example.google_files_app.storage_folder_fragment.FragmentFolder
+import my.kunal.file_explorer.SideActivityOperation
+import my.kunal.file_explorer.storage_folder_fragment.FragmentFolder
 import kotlinx.android.synthetic.main.fragment_browse.*
 import kotlinx.android.synthetic.main.fragment_clean.*
-import java.io.File
+import my.kunal.file_explorer.R
 import kotlin.math.abs
 import kotlin.math.roundToInt
-import kotlin.math.roundToLong
 
 
 class CleanFragment : Fragment(R.layout.fragment_clean) {

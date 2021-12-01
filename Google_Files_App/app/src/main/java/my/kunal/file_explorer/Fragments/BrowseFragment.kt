@@ -1,4 +1,4 @@
-package com.example.google_files_app.Fragments
+package my.kunal.file_explorer.Fragments
 
 import android.Manifest
 import android.app.Activity
@@ -11,24 +11,25 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.R
-import com.example.google_files_app.SideActivityOperation
-import com.example.google_files_app.storage_folder_fragment.FolderAdapter
-import com.example.google_files_app.storage_folder_fragment.FragmentFolder
-import com.example.google_files_app.storage_folder_fragment.OnSelect
+import my.kunal.file_explorer.SideActivityOperation
+import my.kunal.file_explorer.storage_folder_fragment.FolderAdapter
+import my.kunal.file_explorer.storage_folder_fragment.FragmentFolder
+import my.kunal.file_explorer.storage_folder_fragment.OnSelect
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.fragment_browse.*
-import storage_folder_fragment.FileSize
-import storage_folder_fragment.FragmentCategories
+import my.kunal.file_explorer.R
+import my.kunal.file_explorer.storage_folder_fragment.FileSize
+import my.kunal.file_explorer.storage_folder_fragment.FragmentCategories
 import java.io.File
 
 
@@ -39,6 +40,13 @@ class BrowseFragment : Fragment(), OnSelect {
     private var fileList = ArrayList<File>()
     private lateinit var selectedSideActivityOperation: SideActivityOperation
 
+    private lateinit var mTvVideosSize : TextView
+    private lateinit var mTvImagesSize : TextView
+    private lateinit var mTvDocumentsSize : TextView
+    private lateinit var mTvAudioSize : TextView
+    private lateinit var mTvAppsSize : TextView
+    private lateinit var mTvDownloadsSize : TextView
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         val activity = context as Activity
@@ -48,7 +56,14 @@ class BrowseFragment : Fragment(), OnSelect {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onClickOfCategories()
-        runTimePermission()
+        runTimePermission(view)
+
+        mTvVideosSize  = view.findViewById(R.id.tvVideosSize)
+        mTvImagesSize  = view.findViewById(R.id.tvImagesSize)
+        mTvDocumentsSize  = view.findViewById(R.id.tvDocumentsSize)
+        mTvAudioSize  = view.findViewById(R.id.tvAudioSize)
+        mTvAppsSize  = view.findViewById(R.id.tvAppsSize)
+        mTvDownloadsSize  = view.findViewById(R.id.tvDownloadsSize)
 
         tvInternalStorageSize.text = freeMemory().toString() +" GB free"
 
@@ -197,14 +212,14 @@ class BrowseFragment : Fragment(), OnSelect {
 
     }
 
-    private fun runTimePermission() {
+    private fun runTimePermission(view: View) {
         Dexter.withContext(context).withPermissions(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
         ).withListener(object : MultiplePermissionsListener {
             @RequiresApi(Build.VERSION_CODES.N)
             override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
-                displayFile()
+                displayFile(view)
             }
 
             override fun onPermissionRationaleShouldBeShown(
@@ -257,12 +272,12 @@ class BrowseFragment : Fragment(), OnSelect {
 
         if (file != null) {
             Log.d("Tag", FileSize.getVideoSize(file).toString())
-            tvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
-            tvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
-            tvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
-            tvAudioSize.text = sizeFormat(FileSize.getAudioSize(file))
-            tvAppsSize.text = sizeFormat(FileSize.getAppSize(file))
-            tvDownloadsSize.text = sizeFormat(FileSize.getDownloadSize(file))
+            mTvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
+            mTvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
+            mTvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
+            mTvAudioSize.text = sizeFormat(FileSize.getAudioSize(file))
+            mTvAppsSize.text = sizeFormat(FileSize.getAppSize(file))
+            mTvDownloadsSize.text = sizeFormat(FileSize.getDownloadSize(file))
 
 
         }
@@ -284,9 +299,9 @@ class BrowseFragment : Fragment(), OnSelect {
 
 
     @RequiresApi(Build.VERSION_CODES.N)
-    private fun displayFile() {
+    private fun displayFile(view: View) {
 
-        val mRecyclerView: RecyclerView? = requireView().findViewById(R.id.recyclerview)
+        val mRecyclerView: RecyclerView? = view.findViewById(R.id.recyclerview)
         mRecyclerView?.setHasFixedSize(true)
         if (mRecyclerView != null) {
             mRecyclerView.layoutManager = LinearLayoutManager(context)

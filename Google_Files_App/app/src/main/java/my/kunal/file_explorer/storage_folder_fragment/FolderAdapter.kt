@@ -1,4 +1,4 @@
-package com.example.google_files_app.storage_folder_fragment
+package my.kunal.file_explorer.storage_folder_fragment
 
 
 import android.content.Context
@@ -11,14 +11,14 @@ import android.view.View
 import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.FileOpener
-import com.example.google_files_app.R
+import my.kunal.file_explorer.FileOpener
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 import android.os.Build
 import android.text.TextUtils
 import androidx.annotation.RequiresApi
+import my.kunal.file_explorer.R
 
 
 class FolderAdapter(

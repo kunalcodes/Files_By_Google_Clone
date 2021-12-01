@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".MainActivity"
+    tools:context="my.kunal.file_explorer.MainActivity"
     tools:openDrawer="start">
 
     <com.google.android.material.navigation.NavigationView
@@ -32,13 +32,18 @@
                 android:layout_marginTop="40dp"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:layout_width="88dp"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="10dp"
-                    android:background="@drawable/ic_google_files_with_text" />
+                    android:drawableStart="@drawable/ic_google_files_2"
+                    android:drawablePadding="8dp"
+                    android:fontFamily="@font/product_sans_regular"
+                    android:text="Explorer"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
 
                 <View
                     android:layout_width="match_parent"
@@ -124,7 +129,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context="my.kunal.file_explorer.MainActivity">
 
         <LinearLayout
             android:id="@+id/layoutTopBar"
@@ -154,12 +159,15 @@
                         android:layout_marginLeft="20dp"
                         android:background="@drawable/ic_menu_hamburger" />
 
-                    <ImageView
+                    <TextView
                         android:id="@+id/ivLogo"
-                        android:layout_width="88dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/ic_google_files_with_text" />
+                        android:drawableStart="@drawable/ic_google_files_2"
+                        android:drawablePadding="8dp"
+                        android:text="Explorer"
+                        android:textSize="20dp" />
 
                     <ImageView
                         android:id="@+id/ivSearch"

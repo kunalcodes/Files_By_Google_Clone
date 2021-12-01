@@ -1,4 +1,4 @@
-package com.example.google_files_app.storage_folder_fragment
+package my.kunal.file_explorer.storage_folder_fragment
 
 import android.Manifest
 import android.os.Bundle
@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.google_files_app.FileOpener
-import com.example.google_files_app.R
+import my.kunal.file_explorer.FileOpener
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
+import my.kunal.file_explorer.R
 import java.io.File
 
 
@@ -26,7 +26,7 @@ class FragmentFolder : Fragment(), OnSelect {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        runTimePermission()
+        runTimePermission(view)
     }
 
 
@@ -54,13 +54,13 @@ class FragmentFolder : Fragment(), OnSelect {
         }
     }
 
-    private fun runTimePermission() {
+    private fun runTimePermission(view: View) {
         Dexter.withContext(context).withPermissions(
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE
         ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(multiplePermissionsReport: MultiplePermissionsReport) {
-                displayFile()
+                displayFile(view)
             }
 
             override fun onPermissionRationaleShouldBeShown(
@@ -96,9 +96,9 @@ class FragmentFolder : Fragment(), OnSelect {
     }
 
 
-    private fun displayFile() {
+    private fun displayFile(view: View) {
 
-        val mRecyclerView: RecyclerView? = requireView().findViewById(R.id.recyclerview)
+        val mRecyclerView: RecyclerView? = view.findViewById(R.id.recyclerview)
         mRecyclerView?.setHasFixedSize(true)
         if (mRecyclerView != null) {
             mRecyclerView.layoutManager = LinearLayoutManager(context)
