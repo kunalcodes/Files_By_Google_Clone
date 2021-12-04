@@ -56,7 +56,6 @@ class BrowseFragment : Fragment(), OnSelect {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onClickOfCategories()
-        runTimePermission(view)
 
         mTvVideosSize  = view.findViewById(R.id.tvVideosSize)
         mTvImagesSize  = view.findViewById(R.id.tvImagesSize)
@@ -73,6 +72,7 @@ class BrowseFragment : Fragment(), OnSelect {
             launchFirstFragment()
         }
 
+        runTimePermission(view)
 
     }
     fun freeMemory(): Long {
