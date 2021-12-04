@@ -26,6 +26,10 @@
             android:name="my.kunal.file_explorer.MainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name="my.kunal.file_explorer.search_operation.SearchActivity"
+            android:exported="true">
+        </activity>
 
         <provider
             android:authorities="${applicationId}.provider"

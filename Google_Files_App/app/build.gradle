@@ -11,8 +11,8 @@ android {
         applicationId "my.kunal.file_explorer"
         minSdk 21
         targetSdk 30
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -46,4 +46,7 @@ dependencies {
 
     // simple runtime permissions
     implementation 'com.karumi:dexter:6.2.3'
+
+    //Corountines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.1'
 }

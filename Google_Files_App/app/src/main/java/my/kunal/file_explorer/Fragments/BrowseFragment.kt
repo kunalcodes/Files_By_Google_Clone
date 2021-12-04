@@ -27,6 +27,9 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import kotlinx.android.synthetic.main.fragment_browse.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import my.kunal.file_explorer.R
 import my.kunal.file_explorer.storage_folder_fragment.FileSize
 import my.kunal.file_explorer.storage_folder_fragment.FragmentCategories
@@ -40,12 +43,13 @@ class BrowseFragment : Fragment(), OnSelect {
     private var fileList = ArrayList<File>()
     private lateinit var selectedSideActivityOperation: SideActivityOperation
 
-    private lateinit var mTvVideosSize : TextView
-    private lateinit var mTvImagesSize : TextView
-    private lateinit var mTvDocumentsSize : TextView
-    private lateinit var mTvAudioSize : TextView
-    private lateinit var mTvAppsSize : TextView
-    private lateinit var mTvDownloadsSize : TextView
+    private lateinit var mTvVideosSize: TextView
+    private lateinit var mTvImagesSize: TextView
+    private lateinit var mTvDocumentsSize: TextView
+    private lateinit var mTvAudioSize: TextView
+    private lateinit var mTvAppsSize: TextView
+    private lateinit var mTvDownloadsSize: TextView
+    private lateinit var mTvInternalStorageSize: TextView
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -57,14 +61,22 @@ class BrowseFragment : Fragment(), OnSelect {
         super.onViewCreated(view, savedInstanceState)
         onClickOfCategories()
 
-        mTvVideosSize  = view.findViewById(R.id.tvVideosSize)
-        mTvImagesSize  = view.findViewById(R.id.tvImagesSize)
-        mTvDocumentsSize  = view.findViewById(R.id.tvDocumentsSize)
-        mTvAudioSize  = view.findViewById(R.id.tvAudioSize)
-        mTvAppsSize  = view.findViewById(R.id.tvAppsSize)
-        mTvDownloadsSize  = view.findViewById(R.id.tvDownloadsSize)
+        mTvVideosSize = view.findViewById(R.id.tvVideosSize)
+        mTvImagesSize = view.findViewById(R.id.tvImagesSize)
+        mTvDocumentsSize = view.findViewById(R.id.tvDocumentsSize)
+        mTvAudioSize = view.findViewById(R.id.tvAudioSize)
+        mTvAppsSize = view.findViewById(R.id.tvAppsSize)
+        mTvDownloadsSize = view.findViewById(R.id.tvDownloadsSize)
+        mTvInternalStorageSize = view.findViewById(R.id.tvInternalStorageSize)
 
-        tvInternalStorageSize.text = freeMemory().toString() +" GB free"
+
+        var freeMemory = ""
+        CoroutineScope(Dispatchers.Default).launch {
+            freeMemory = freeMemory().toString() + " GB free"
+            CoroutineScope(Dispatchers.Main).launch {
+                mTvInternalStorageSize.text = freeMemory
+            }
+        }
 
         layoutStorageInternal.setOnClickListener {
             selectedSideActivityOperation.onSideActivitySelected("Internal Storage")
@@ -73,11 +85,13 @@ class BrowseFragment : Fragment(), OnSelect {
         }
 
         runTimePermission(view)
+//        buildList()
 
     }
+
     fun freeMemory(): Long {
         val statFs = StatFs(Environment.getRootDirectory().absolutePath)
-        return (statFs.availableBlocksLong * statFs.blockSize)/(1024*1024*100).toLong()
+        return (statFs.availableBlocksLong * statFs.blockSize) / (1024 * 1024 * 100).toLong()
     }
 
     override fun onCreateView(
@@ -86,8 +100,6 @@ class BrowseFragment : Fragment(), OnSelect {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_browse, container, false)
-
-        buildList()
 
         return view
     }
@@ -200,16 +212,17 @@ class BrowseFragment : Fragment(), OnSelect {
 
 
     private fun buildList() {
-        val internalStorage = System.getenv("EXTERNAL_STORAGE")!!
-        storage = File(internalStorage)
-        try {
-            val data = requireArguments().getString("path").toString()
-            val file = File(data)
-            storage = file
-        } catch (e: Exception) {
-            e.printStackTrace()
+        CoroutineScope(Dispatchers.IO).launch {
+            val internalStorage = System.getenv("EXTERNAL_STORAGE")!!
+            storage = File(internalStorage)
+            try {
+                val data = requireArguments().getString("path").toString()
+                val file = File(data)
+                storage = file
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
-
     }
 
     private fun runTimePermission(view: View) {
@@ -271,14 +284,15 @@ class BrowseFragment : Fragment(), OnSelect {
         }
 
         if (file != null) {
-            Log.d("Tag", FileSize.getVideoSize(file).toString())
-            mTvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
-            mTvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
-            mTvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
-            mTvAudioSize.text = sizeFormat(FileSize.getAudioSize(file))
-            mTvAppsSize.text = sizeFormat(FileSize.getAppSize(file))
-            mTvDownloadsSize.text = sizeFormat(FileSize.getDownloadSize(file))
-
+            CoroutineScope(Dispatchers.Main).launch {
+                Log.d("Tag", FileSize.getVideoSize(file).toString())
+                mTvVideosSize.text = sizeFormat(FileSize.getVideoSize(file))
+                mTvImagesSize.text = sizeFormat(FileSize.getImageSize(file))
+                mTvDocumentsSize.text = sizeFormat(FileSize.getDocSize(file))
+                mTvAudioSize.text = sizeFormat(FileSize.getAudioSize(file))
+                mTvAppsSize.text = sizeFormat(FileSize.getAppSize(file))
+                mTvDownloadsSize.text = sizeFormat(FileSize.getDownloadSize(file))
+            }
 
         }
         return arrayList
@@ -307,7 +321,9 @@ class BrowseFragment : Fragment(), OnSelect {
             mRecyclerView.layoutManager = LinearLayoutManager(context)
         }
         fileList = java.util.ArrayList()
-        fileList.addAll(findFiles(storage))
+        CoroutineScope(Dispatchers.IO).launch {
+            fileList.addAll(findFiles(storage))
+        }
 
         val adapter = context?.let { FolderAdapter(it, fileList, FragmentFolder()) }
         mRecyclerView?.adapter = adapter
@@ -316,16 +332,20 @@ class BrowseFragment : Fragment(), OnSelect {
     }
 
     override fun onClick(file: File?) {
-        if (file != null) {
-            if (file.isDirectory) {
-                val bundle = Bundle()
-                bundle.putString("path", file.absolutePath)
-                val fragmentFolder = FragmentFolder()
-                fragmentFolder.arguments = bundle
-                requireFragmentManager().beginTransaction().replace(R.id.container, fragmentFolder)
-                    .addToBackStack(null).commit()
+        CoroutineScope(Dispatchers.IO).launch {
+            if (file != null) {
+                if (file.isDirectory) {
+                    val bundle = Bundle()
+                    bundle.putString("path", file.absolutePath)
+                    val fragmentFolder = FragmentFolder()
+                    fragmentFolder.arguments = bundle
+                    requireFragmentManager().beginTransaction()
+                        .replace(R.id.container, fragmentFolder)
+                        .addToBackStack(null).commit()
+                }
             }
         }
+
     }
 
     override fun onLongSelect(file: File?) {}
