@@ -85,6 +85,9 @@ class BrowseFragment : Fragment(), OnSelect {
         }
 
         runTimePermission(view)
+        /*
+        commented the method, for debugging
+         */
 //        buildList()
 
     }
