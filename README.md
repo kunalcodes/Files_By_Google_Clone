@@ -14,6 +14,14 @@ Explorer is a file management application that allows users to explore, preview 
 * Preview/ play media files
 * File sharing
 
+<br/>
+
+
+# Get it on playstore:
+
+
+<a href="https://play.google.com/store/apps/details?id=my.kunal.file_explorer" title="Playstore" target="_blank"><img height="120" width="240" src="https://data.ibtimes.sg/en/full/12247/google-play-store-8-1-73-apk.png"></a>
+
 
 <!-- 
 # Links 
